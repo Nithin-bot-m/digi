@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="rg" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#02A3FE"/>
+      <stop offset="0.22" stop-color="#2E4BFE"/>
+      <stop offset="0.42" stop-color="#7B3FFE"/>
+      <stop offset="0.6" stop-color="#E93BF2"/>
+      <stop offset="0.8" stop-color="#FF544D"/>
+      <stop offset="1" stop-color="#FF8E2D"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.3" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#2E4BFE" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#001331" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.75" cy="0.85" r="0.5">
+      <stop offset="0" stop-color="#E93BF2" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#001331" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#001331"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+  <g transform="translate(600 360)">
+    <path d="M-160 0 C-160 -80, -80 -80, -40 -30 C-10 5, 0 0, 0 0 C0 0, 10 5, 40 -30 C80 -80, 160 -80, 160 0 C160 80, 80 80, 40 30 C10 -5, 0 0, 0 0 C0 0, -10 -5, -40 30 C-80 80, -160 80, -160 0 Z"
+          fill="none" stroke="url(#rg)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M150 -60 L175 -90 L162 -50 Z" fill="#FF8E2D"/>
+  </g>
+  <text x="600" y="510" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-weight="800" font-size="92" fill="#FDFDFD" letter-spacing="-2">Digi∞Artha</text>
+  <text x="600" y="565" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="26" fill="#8FA3C7" letter-spacing="6">DIGITAL. MEASURABLE. GROWTH.</text>
+</svg>
