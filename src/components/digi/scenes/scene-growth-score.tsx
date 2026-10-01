@@ -291,7 +291,9 @@ export function SceneGrowthScore() {
               <p className="mb-6 text-center font-mono text-sm text-ink/70">
                 Scanning <span className="font-bold text-ink">{scannedUrl}</span>…
               </p>
-              <div className="relative mx-auto grid max-w-md grid-cols-4 gap-3 sm:grid-cols-5">
+              <div className="relative mx-auto grid max-w-md grid-cols-4 gap-3 sm:grid-cols-5 overflow-hidden rounded-2xl p-4 bg-white/40 border border-ink/5">
+                {/* 80. QR Scanner / Radar Line */}
+                <div className="scanner-laser-beam" />
                 {DIMENSIONS_LIST.map((d, i) => (
                   <div
                     key={d}
@@ -310,16 +312,6 @@ export function SceneGrowthScore() {
                     />
                   </div>
                 ))}
-                {!reduced && (
-                  <div
-                    className="pointer-events-none absolute inset-0 rounded-2xl"
-                    style={{
-                      background:
-                        'linear-gradient(180deg, transparent 0%, rgba(46,75,254,0.18) 50%, transparent 100%)',
-                      animation: 'scan-sweep 2.2s ease-in-out forwards',
-                    }}
-                  />
-                )}
               </div>
               <p className="mt-6 text-center text-xs text-ink/50">
                 Analysing presence, visibility, conversion readiness and measurement foundations.

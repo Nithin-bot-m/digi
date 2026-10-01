@@ -368,3 +368,207 @@
   background-size: 48px 48px;
   background-position: -1px -1px;
 }
+
+/* ====================================================================== */
+/* Curated Micro-Interactions (Awwwards / 21st.dev / Motion Tier)        */
+/* ====================================================================== */
+
+/* 1. Gradient Slide & 6. Shine Sweep (for CTA Buttons) */
+.shine-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.shine-sweep::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  transition: all 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+  opacity: 0;
+}
+.shine-sweep:hover::after {
+  left: 140%;
+  opacity: 1;
+}
+
+.gradient-slide-btn {
+  background-size: 200% auto;
+  background-position: 0% center;
+  transition: background-position 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s ease, box-shadow 0.25s ease;
+}
+.gradient-slide-btn:hover {
+  background-position: 100% center;
+}
+
+/* 10. Pulse Ring */
+.pulse-ring-badge {
+  position: relative;
+}
+.pulse-ring-badge::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  opacity: 0.6;
+  animation: pulse-ring-anim 2.4s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  pointer-events: none;
+}
+@keyframes pulse-ring-anim {
+  0% { transform: scale(0.96); opacity: 0.7; }
+  60% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+/* 18. Animated Gradient Text */
+.text-ribbon-animated {
+  background: linear-gradient(
+    90deg,
+    #02A3FE 0%,
+    #2E4BFE 20%,
+    #7B3FFE 40%,
+    #E93BF2 60%,
+    #FF544D 80%,
+    #FF8E2D 100%,
+    #02A3FE 120%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: ribbon-text-pan 6s linear infinite;
+}
+@keyframes ribbon-text-pan {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* 21. Shimmer Text */
+@keyframes text-shimmer-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.65) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: text-shimmer-sweep 4s infinite linear;
+}
+
+/* 27. Sliding Underline */
+.sliding-underline {
+  position: relative;
+  display: inline-block;
+}
+.sliding-underline::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -3px;
+  left: 0;
+  background: linear-gradient(90deg, #02A3FE, #2E4BFE, #E93BF2);
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sliding-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* 31. Corner Brackets */
+.corner-brackets {
+  position: relative;
+}
+.corner-brackets::before,
+.corner-brackets::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.corner-brackets::before {
+  top: -3px;
+  left: -3px;
+  border-top: 2px solid rgba(2, 163, 254, 0.65);
+  border-left: 2px solid rgba(2, 163, 254, 0.65);
+}
+.corner-brackets::after {
+  bottom: -3px;
+  right: -3px;
+  border-bottom: 2px solid rgba(233, 59, 242, 0.65);
+  border-right: 2px solid rgba(233, 59, 242, 0.65);
+}
+.corner-brackets:hover::before {
+  transform: translate(-3px, -3px);
+  border-color: #02A3FE;
+  box-shadow: -2px -2px 10px rgba(2, 163, 254, 0.4);
+}
+.corner-brackets:hover::after {
+  transform: translate(3px, 3px);
+  border-color: #E93BF2;
+  box-shadow: 2px 2px 10px rgba(233, 59, 242, 0.4);
+}
+
+/* 80. QR Scanner / Radar Line */
+@keyframes laser-sweep {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+.scanner-laser-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, #02A3FE 25%, #E93BF2 75%, transparent 100%);
+  box-shadow: 0 0 16px 2px rgba(2, 163, 254, 0.8), 0 0 32px 6px rgba(233, 59, 242, 0.5);
+  animation: laser-sweep 2.2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 25;
+}
+
+/* 100. Glow Pulse Heading */
+@keyframes aura-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(46, 75, 254, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(233, 59, 242, 0.55));
+  }
+}
+.glow-pulse-heading {
+  animation: aura-pulse 4.5s ease-in-out infinite;
+}
+

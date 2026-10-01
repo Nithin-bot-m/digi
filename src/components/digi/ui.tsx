@@ -47,8 +47,8 @@ export function Section({
 
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <p className={cn('inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.28em] text-cyan', className)}>
-      <Sparkle size={12} />
+    <p className={cn('inline-flex items-center gap-2 rounded-full border border-cyan/25 bg-cyan/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-cyan backdrop-blur-md shadow-[0_0_12px_rgba(2,163,254,0.15)]', className)}>
+      <span className="pulse-ring-badge relative flex h-2 w-2 rounded-full bg-cyan shadow-[0_0_8px_#02A3FE]" />
       {children}
     </p>
   )
@@ -124,9 +124,9 @@ export function CtaButton({
 }) {
   const styles = {
     primary:
-      'bg-ribbon text-white glow-ribbon hover:scale-[1.02]',
-    ghost: 'border border-white/25 bg-white/5 text-mist hover:bg-white/10',
-    light: 'bg-ink text-mist hover:bg-ink-soft',
+      'bg-ribbon text-white glow-ribbon shine-sweep gradient-slide-btn hover:scale-[1.02] hover:shadow-[0_12px_40px_rgba(46,75,254,0.45)]',
+    ghost: 'border border-white/25 bg-white/5 text-mist hover:bg-white/10 hover:border-white/40 hover:scale-[1.01]',
+    light: 'bg-ink text-mist hover:bg-ink-soft hover:scale-[1.01]',
   }[variant]
   return (
     <a
@@ -145,13 +145,15 @@ export function CtaButton({
         }
       }}
       className={cn(
-        'inline-flex items-center justify-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold transition-all',
+        'group relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 active:scale-[0.98] active:translate-y-0.5',
         styles,
         className,
       )}
     >
-      {children}
-      <CtaArrow />
+      <span>{children}</span>
+      <span className="inline-block transition-transform duration-300 group-hover:translate-x-1.5">
+        <CtaArrow />
+      </span>
     </a>
   )
 }
@@ -189,23 +191,23 @@ export function GlassNode({
       <Wrapper
         onClick={onClick}
         className={cn(
-          'glass-dark relative flex h-full w-full flex-col gap-3 rounded-2xl p-5 text-left',
-          onClick && 'cursor-pointer',
+          'glass-dark shine-sweep relative flex h-full w-full flex-col gap-3 rounded-2xl p-5 text-left transition-all duration-300',
+          onClick && 'cursor-pointer hover:border-white/20 hover:shadow-[0_16px_50px_-10px_rgba(46,75,254,0.35)]',
         )}
-        style={{ boxShadow: `0 0 0 1px ${accentColor}22, 0 12px 40px -12px ${accentColor}55` }}
+        style={{ boxShadow: `0 0 0 1px ${accentColor}28, 0 12px 40px -12px ${accentColor}55` }}
       >
         <div className="flex items-center justify-between">
           {index && (
             <span
-              className="font-mono text-xs tabular"
+              className="font-mono text-xs tabular font-bold"
               style={{ color: accentColor }}
             >
               {index}
             </span>
           )}
           <span
-            className="inline-block h-2 w-2 rounded-full"
-            style={{ background: accentColor, boxShadow: `0 0 12px ${accentColor}` }}
+            className="pulse-ring-badge relative inline-block h-2.5 w-2.5 rounded-full"
+            style={{ background: accentColor, color: accentColor, boxShadow: `0 0 12px ${accentColor}` }}
           />
         </div>
         <h3 className="text-lg font-bold text-mist">{title}</h3>

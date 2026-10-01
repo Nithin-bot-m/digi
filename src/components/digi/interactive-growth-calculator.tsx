@@ -258,11 +258,11 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
 
           {/* Quick Metrics */}
           <div className="grid w-full grid-cols-2 gap-2 border-y border-white/10 py-3 text-center">
-            <div>
+            <div className="corner-brackets rounded-lg bg-white/[0.03] p-2 transition-colors hover:bg-white/[0.06]">
               <p className="font-mono text-base font-bold text-cyan">+{calculated.potentialRoas}x</p>
               <p className="text-[10px] uppercase tracking-wider text-mist/60">Target Scale Multiple</p>
             </div>
-            <div>
+            <div className="corner-brackets rounded-lg bg-white/[0.03] p-2 transition-colors hover:bg-white/[0.06]">
               <p className="font-mono text-base font-bold text-coral">-{calculated.cacReduction}%</p>
               <p className="text-[10px] uppercase tracking-wider text-mist/60">Achievable CAC Savings</p>
             </div>

@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import { Section, CtaButton, Eyebrow } from '@/components/digi/ui'
 import { GradientRule, Sparkle } from '@/components/digi/brand'
@@ -40,10 +40,26 @@ const STAGE_GLOSSES: Record<(typeof STAGES)[number], string> = {
   '∞': 'Keep compounding',
 }
 
+const HERO_PHRASES = [
+  'Measurable Growth.',
+  'Predictable Revenue.',
+  'AI Visibility.',
+  'Compounding Scale.',
+]
+
 const VIEWPORT = { once: true, margin: '-15% 0px -10% 0px' } as const
 
 export function SceneHero() {
   const reduced = useReducedMotion()
+  const [phraseIndex, setPhraseIndex] = React.useState(0)
+
+  React.useEffect(() => {
+    if (reduced) return
+    const interval = setInterval(() => {
+      setPhraseIndex((prev) => (prev + 1) % HERO_PHRASES.length)
+    }, 3200)
+    return () => clearInterval(interval)
+  }, [reduced])
 
   return (
     <Section id="scene-0-hero" scene="0" tone="dark" full className="min-h-dvh pt-28 sm:pt-32 lg:pt-40">
@@ -59,15 +75,28 @@ export function SceneHero() {
           </Eyebrow>
         </motion.div>
 
-        {/* H1 — the only h1 on the page */}
+        {/* H1 — the only h1 on the page with animated dynamic word rotator */}
         <motion.h1
           initial={reduced ? undefined : { opacity: 0, y: 24 }}
           animate={reduced ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
-          className="text-balance text-4xl font-extrabold leading-[1.02] tracking-tight text-mist text-glow-ribbon sm:text-5xl lg:text-6xl"
+          className="text-balance text-4xl font-extrabold leading-[1.06] tracking-tight text-mist text-glow-ribbon sm:text-5xl lg:text-6xl"
         >
           Turn Digital Into{' '}
-          <span className="text-ribbon">Measurable Growth.</span>
+          <span className="inline-block relative overflow-hidden align-bottom min-w-[280px] sm:min-w-[420px] text-left">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={phraseIndex}
+                initial={reduced ? undefined : { y: 24, opacity: 0, filter: 'blur(6px)' }}
+                animate={reduced ? undefined : { y: 0, opacity: 1, filter: 'blur(0px)' }}
+                exit={reduced ? undefined : { y: -24, opacity: 0, filter: 'blur(6px)' }}
+                transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
+                className="inline-block text-ribbon-animated font-extrabold"
+              >
+                {HERO_PHRASES[phraseIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </span>
         </motion.h1>
 
         {/* Body (Source A §5) */}

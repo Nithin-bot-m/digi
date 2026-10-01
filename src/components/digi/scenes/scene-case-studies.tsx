@@ -134,7 +134,7 @@ export function SceneCaseStudies() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
               transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-              className="flex h-full flex-col gap-3 rounded-2xl border border-ink/10 bg-white p-5 shadow-[0_16px_48px_-24px_rgba(46,75,254,0.35)]"
+              className="shine-sweep group relative flex h-full flex-col gap-3 rounded-2xl border border-ink/10 bg-white p-5 shadow-[0_16px_48px_-24px_rgba(46,75,254,0.35)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_-15px_rgba(46,75,254,0.3)] hover:border-royal/30"
               style={{ boxShadow: `inset 0 0 0 1px #2E4BFE14` }}
             >
               <div className="flex items-center justify-between gap-2">

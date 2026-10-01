@@ -117,7 +117,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200',
+                  'sliding-underline relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200',
                   isLight
                     ? active
                       ? 'bg-ink/10 text-ink font-semibold shadow-inner'
@@ -136,10 +136,12 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <Link
             href="/growth-score"
-            className="hidden items-center gap-1.5 rounded-full bg-ribbon px-4 py-2 text-sm font-semibold text-white shadow-lg glow-ribbon transition hover:scale-[1.02] sm:inline-flex"
+            className="group hidden items-center gap-1.5 rounded-full bg-ribbon px-4 py-2 text-sm font-semibold text-white shadow-lg glow-ribbon shine-sweep gradient-slide-btn transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] sm:inline-flex"
           >
-            Analyse My Growth
-            <CtaArrow />
+            <span>Analyse My Growth</span>
+            <span className="transition-transform duration-300 group-hover:translate-x-1">
+              <CtaArrow />
+            </span>
           </Link>
           <button
             className={cn(
