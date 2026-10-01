@@ -2,9 +2,11 @@
 
 import * as React from 'react'
 import { motion, AnimatePresence, useMotionValue, animate } from 'framer-motion'
+import confetti from 'canvas-confetti'
 import { Section, SectionHeading, CtaButton, Tag } from '@/components/digi/ui'
 import { Illustrative } from '@/components/digi/brand'
 import { useReducedMotion } from '@/components/digi/hooks'
+import { BorderBeam } from '@/components/ui/border-beam'
 import { analytics } from '@/lib/analytics'
 
 /**
@@ -194,6 +196,16 @@ export function SceneGrowthScore() {
       setData(resultData)
       setState('done')
       analytics.scoreComplete(resultData.url || trimmed, resultData.overall ?? 0)
+      if (!reduced) {
+        try {
+          confetti({
+            particleCount: 90,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#02A3FE', '#2E4BFE', '#7B3FFE', '#E93BF2', '#FF8E2D'],
+          })
+        } catch {}
+      }
     } catch {
       setState('error')
       setErrorMsg('Error generating diagnostic. Please try again.')
@@ -233,8 +245,9 @@ export function SceneGrowthScore() {
             >
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-3 rounded-2xl border border-ink/10 bg-white p-3 shadow-[0_24px_80px_-32px_rgba(46,75,254,0.35)] sm:flex-row sm:items-center"
+                className="relative overflow-hidden flex flex-col gap-3 rounded-2xl border border-ink/10 bg-white p-3 shadow-[0_24px_80px_-32px_rgba(46,75,254,0.35)] sm:flex-row sm:items-center"
               >
+                <BorderBeam size={220} duration={8} colorFrom="#02A3FE" colorTo="#E93BF2" borderWidth={1.5} />
                 <label htmlFor="gs-url" className="sr-only">
                   Website URL
                 </label>
@@ -250,9 +263,10 @@ export function SceneGrowthScore() {
                 />
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-ribbon px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.02] glow-ribbon"
+                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-ribbon px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98] glow-ribbon shine-sweep gradient-slide-btn"
                 >
-                  Analyse My Digital Growth →
+                  <span>Analyse My Digital Growth</span>
+                  <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
                 </button>
               </form>
 

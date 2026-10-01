@@ -165,7 +165,7 @@ function FragmentChip({ color, label }: { color: string; label: string }) {
   return (
     <span
       className={cn(
-        'inline-flex -translate-x-1/2 items-center gap-2 rounded-xl px-3 py-2 text-xs font-semibold text-mist',
+        'shine-sweep inline-flex -translate-x-1/2 items-center gap-2.5 rounded-xl px-3.5 py-2 text-xs font-semibold text-mist transition-all duration-300 hover:scale-110 hover:-translate-y-1',
         'glass-dark',
       )}
       style={{
@@ -174,8 +174,8 @@ function FragmentChip({ color, label }: { color: string; label: string }) {
       }}
     >
       <span
-        className="inline-block h-2.5 w-2.5 rounded-full"
-        style={{ background: color, boxShadow: `0 0 10px ${color}` }}
+        className="pulse-ring-badge relative inline-block h-2.5 w-2.5 rounded-full"
+        style={{ background: color, color: color, boxShadow: `0 0 10px ${color}` }}
       />
       {label}
     </span>

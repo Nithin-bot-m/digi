@@ -371,10 +371,14 @@ export function SectionContact() {
             <Button
               type="submit"
               disabled={isSubmitting || (!!TURNSTILE_SITE_KEY && !turnstileToken)}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-ribbon px-5 py-2.5 text-sm font-semibold text-white glow-ribbon transition-all hover:scale-[1.02] disabled:opacity-60"
+              className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-ribbon px-6 py-3 text-sm font-semibold text-white glow-ribbon shine-sweep gradient-slide-btn transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
             >
-              {isSubmitting ? 'Submitting…' : 'Start the Conversation'}
-              {!isSubmitting && <CtaArrow />}
+              <span>{isSubmitting ? 'Submitting…' : 'Start the Conversation'}</span>
+              {!isSubmitting && (
+                <span className="transition-transform duration-300 group-hover:translate-x-1.5">
+                  <CtaArrow />
+                </span>
+              )}
             </Button>
 
             <p className="text-xs text-mist/45">

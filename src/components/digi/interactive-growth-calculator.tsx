@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Sparkles, TrendingUp, Zap, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react'
 import { ShimmerButton } from '@/components/ui/shimmer-button'
 import { BorderBeam } from '@/components/ui/border-beam'
+import { AnimatedCounter } from '@/components/ui/animated-counter'
 import { cn } from '@/lib/utils'
 
 interface Dimension {
@@ -251,7 +252,9 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
               </defs>
             </svg>
             <div className="absolute flex flex-col items-center">
-              <span className="font-mono text-4xl font-extrabold text-mist">{calculated.finalScore}</span>
+              <span className="font-mono text-4xl font-extrabold text-mist">
+                <AnimatedCounter value={calculated.finalScore} />
+              </span>
               <span className="text-[10px] font-semibold uppercase tracking-wider text-mist/50">/ 100</span>
             </div>
           </div>
