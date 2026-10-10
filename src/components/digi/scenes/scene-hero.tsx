@@ -80,10 +80,10 @@ export function SceneHero() {
           initial={reduced ? undefined : { opacity: 0, y: 24 }}
           animate={reduced ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.05 }}
-          className="text-balance text-4xl font-extrabold leading-[1.06] tracking-tight text-mist text-glow-ribbon sm:text-5xl lg:text-6xl"
+          className="text-balance text-3xl font-extrabold leading-[1.08] tracking-tight text-mist text-glow-ribbon sm:text-5xl lg:text-6xl"
         >
           Turn Digital Into{' '}
-          <span className="inline-block relative overflow-hidden align-bottom min-w-[280px] sm:min-w-[420px] text-left">
+          <span className="inline-block relative overflow-hidden align-bottom min-w-0 max-w-full sm:min-w-[420px] text-left">
             <AnimatePresence mode="wait">
               <motion.span
                 key={phraseIndex}
@@ -126,12 +126,12 @@ export function SceneHero() {
           initial={reduced ? undefined : { opacity: 0, y: 16 }}
           animate={reduced ? undefined : { opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut', delay: 0.42 }}
-          className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
+          className="flex flex-col w-full sm:w-auto items-stretch sm:items-center gap-3 sm:flex-row sm:gap-4"
         >
-          <CtaButton href="#growth-score" variant="primary" className="px-6 py-3 text-base">
+          <CtaButton href="#growth-score" variant="primary" className="w-full sm:w-auto px-6 py-3 text-base text-center justify-center">
             Get Your Digital Growth Score →
           </CtaButton>
-          <CtaButton href="#contact" variant="ghost" className="px-6 py-3 text-base">
+          <CtaButton href="#contact" variant="ghost" className="w-full sm:w-auto px-6 py-3 text-base text-center justify-center">
             Talk to a Growth Strategist →
           </CtaButton>
         </motion.div>

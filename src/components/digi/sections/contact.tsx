@@ -246,7 +246,7 @@ export function SectionContact() {
             onSubmit={handleSubmit(onSubmit)}
             onPointerDown={onFormStart}
             noValidate
-            className="glass-dark relative overflow-hidden flex flex-col gap-5 rounded-2xl p-6 sm:p-8"
+            className="glass-dark relative overflow-hidden flex flex-col gap-5 rounded-2xl p-4 sm:p-8"
             aria-label="Contact Digi∞Artha"
           >
             <BorderBeam size={250} duration={12} borderWidth={1.5} />
@@ -371,7 +371,7 @@ export function SectionContact() {
             <Button
               type="submit"
               disabled={isSubmitting || (!!TURNSTILE_SITE_KEY && !turnstileToken)}
-              className="group relative inline-flex items-center justify-center gap-2 rounded-full bg-ribbon px-6 py-3 text-sm font-semibold text-white glow-ribbon shine-sweep gradient-slide-btn transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+              className="group relative inline-flex w-full sm:w-auto min-h-[48px] items-center justify-center gap-2 rounded-full bg-ribbon px-6 py-3 text-sm font-semibold text-white glow-ribbon shine-sweep gradient-slide-btn transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
             >
               <span>{isSubmitting ? 'Submitting…' : 'Start the Conversation'}</span>
               {!isSubmitting && (

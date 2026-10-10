@@ -111,7 +111,7 @@ function FlowNodes({ reduced }: { reduced: boolean }) {
 
       {/* Mobile vertical connector */}
       <div
-        className="absolute left-1/2 top-7 bottom-7 w-[3px] -translate-x-1/2 bg-ribbon sm:hidden"
+        className="absolute left-7 top-7 bottom-7 w-[3px] -translate-x-1/2 bg-ribbon sm:hidden"
         aria-hidden="true"
       />
 

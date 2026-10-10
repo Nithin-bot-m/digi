@@ -182,34 +182,36 @@ function LeadBirth({ reduced }: { reduced: boolean }) {
         <line x1="0" y1="2" x2="800" y2="2" stroke="url(#lead-funnel)" strokeWidth="2" strokeDasharray="6 6" opacity="0.55" />
       </svg>
 
-      {/* Particles funneling in — mounted-gated to avoid SSR/client transform mismatch */}
-      {mounted && PARTICLES.map((p, i) => {
-        return (
-          <motion.span
-            key={i}
-            className="absolute h-2 w-2 rounded-full"
-            style={{
-              background: p.color,
-              boxShadow: `0 0 8px ${p.color}, 0 0 16px ${p.color}77`,
-              left: 0,
-              top: 0,
-            }}
-            initial={{ x: p.startX, y: p.startY, opacity: 0, scale: 0.4 }}
-            whileInView={{
-              x: p.targetX,
-              y: p.targetY,
-              opacity: [0, 1, 1, 0],
-              scale: [0.4, 1.2, 1, 0],
-            }}
-            viewport={VIEWPORT}
-            transition={{
-              duration: 1.4,
-              delay: 0.3 + (i / PARTICLE_COUNT) * 1.6,
-              ease: 'easeInOut',
-            }}
-          />
-        )
-      })}
+      {/* Particles funneling in — enclosed to prevent horizontal overflow on narrow screens */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+        {mounted && PARTICLES.map((p, i) => {
+          return (
+            <motion.span
+              key={i}
+              className="absolute h-2 w-2 rounded-full"
+              style={{
+                background: p.color,
+                boxShadow: `0 0 8px ${p.color}, 0 0 16px ${p.color}77`,
+                left: 0,
+                top: 0,
+              }}
+              initial={{ x: p.startX, y: p.startY, opacity: 0, scale: 0.4 }}
+              whileInView={{
+                x: p.targetX,
+                y: p.targetY,
+                opacity: [0, 1, 1, 0],
+                scale: [0.4, 1.2, 1, 0],
+              }}
+              viewport={VIEWPORT}
+              transition={{
+                duration: 1.4,
+                delay: 0.3 + (i / PARTICLE_COUNT) * 1.6,
+                ease: 'easeInOut',
+              }}
+            />
+          )
+        })}
+      </div>
 
       {/* Landing page rectangle */}
       <motion.div
@@ -217,7 +219,7 @@ function LeadBirth({ reduced }: { reduced: boolean }) {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={VIEWPORT}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="absolute left-1/2 top-1/2 h-32 w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-ink-deep/80 p-3"
+        className="absolute left-1/2 top-1/2 h-32 w-[280px] max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-ink-deep/80 p-3"
         style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.04), 0 16px 60px -10px rgba(255,84,77,0.35)' }}
       >
         <div className="mb-2 h-2 w-1/3 rounded-full bg-white/20" />

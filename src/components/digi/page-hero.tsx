@@ -100,7 +100,7 @@ export function PageHero({
           initial={reduced ? undefined : { opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="mt-4 text-balance text-4xl font-extrabold leading-[1.05] text-mist sm:text-5xl lg:text-6xl"
+          className="mt-4 text-balance text-3xl font-extrabold leading-[1.08] text-mist sm:text-5xl lg:text-6xl"
         >
           {h1}
         </motion.h1>
@@ -115,10 +115,10 @@ export function PageHero({
           </motion.p>
         )}
         {ctas && ctas.length > 0 && (
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-stretch sm:items-center gap-3">
             {ctas.map((c) =>
               c.variant === 'primary' ? (
-                <ShimmerButton key={c.href + c.label} href={c.href}>
+                <ShimmerButton key={c.href + c.label} href={c.href} className="w-full sm:w-auto text-center justify-center">
                   <span>{c.label}</span>
                   <CtaArrow />
                 </ShimmerButton>
@@ -126,7 +126,7 @@ export function PageHero({
                 <Link
                   key={c.href + c.label}
                   href={c.href}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-mist transition-all hover:bg-white/10 hover:scale-[1.02]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-mist transition-all hover:bg-white/10 active:scale-[0.98]"
                 >
                   {c.label}
                   <CtaArrow />
@@ -183,19 +183,19 @@ export function NextStepBand({
     <section className="relative overflow-hidden stage-ink py-20 text-center" data-tone="dark">
       <div className="pointer-events-none absolute inset-0 mesh-grid opacity-25" aria-hidden="true" />
       <div className="relative mx-auto max-w-4xl px-4">
-        <div className="glass-dark relative overflow-hidden rounded-3xl border border-white/10 p-8 sm:p-12 shadow-[0_24px_80px_-24px_rgba(46,75,254,0.35)]">
+        <div className="glass-dark relative overflow-hidden rounded-3xl border border-white/10 p-6 sm:p-12 shadow-[0_24px_80px_-24px_rgba(46,75,254,0.35)]">
           <BorderBeam size={280} duration={12} borderWidth={1.5} />
-          <h2 className="text-balance text-3xl font-extrabold leading-tight text-mist sm:text-4xl">
+          <h2 className="text-balance text-2xl font-extrabold leading-tight text-mist sm:text-4xl">
             {title}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-mist/75 sm:text-lg">{body}</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <ShimmerButton href={primary.href}>
+          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center justify-center gap-3">
+            <ShimmerButton href={primary.href} className="w-full sm:w-auto justify-center">
               <span>{primary.label}</span>
             </ShimmerButton>
             <Link
               href={secondary.href}
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-mist hover:bg-white/10 transition-all hover:scale-[1.02]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-mist hover:bg-white/10 transition-all active:scale-[0.98]"
             >
               {secondary.label}
             </Link>

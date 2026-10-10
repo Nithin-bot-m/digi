@@ -93,7 +93,7 @@ export function SolutionDetailPage({ slug }: { slug: string }) {
         <div className="mt-10">
           <Link
             href={s.ctaHref}
-            className="inline-flex items-center gap-1.5 rounded-full bg-ribbon px-5 py-2.5 text-sm font-semibold text-white glow-ribbon hover:scale-[1.02]"
+            className="inline-flex w-full sm:w-auto min-h-[44px] items-center justify-center gap-1.5 rounded-full bg-ribbon px-5 py-2.5 text-center text-sm font-semibold text-white glow-ribbon hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             {s.cta}
           </Link>

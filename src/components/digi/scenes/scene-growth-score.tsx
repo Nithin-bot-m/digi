@@ -43,6 +43,8 @@ type ScoreResponse = {
   error?: string
 }
 
+type SceneState = 'idle' | 'scanning' | 'done' | 'error'
+
 const DIMENSIONS_LIST = [
   'Website Health',
   'Search Visibility',
@@ -259,11 +261,11 @@ export function SceneGrowthScore() {
                   placeholder="www.yourcompany.com"
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="flex-1 rounded-xl border border-ink/10 bg-mist-soft px-4 py-3 font-mono text-sm text-ink placeholder:text-ink/40 focus:border-royal focus:outline-none focus:ring-2 focus:ring-royal/30"
+                  className="flex-1 min-w-0 w-full rounded-xl border border-ink/10 bg-mist-soft px-4 py-3 font-mono text-base sm:text-sm text-ink placeholder:text-ink/40 focus:border-royal focus:outline-none focus:ring-2 focus:ring-royal/30"
                 />
                 <button
                   type="submit"
-                  className="group relative inline-flex items-center justify-center gap-2 rounded-xl bg-ribbon px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98] glow-ribbon shine-sweep gradient-slide-btn"
+                  className="group relative inline-flex min-h-[44px] w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-ribbon px-5 py-3 text-sm font-semibold text-white transition-all hover:scale-[1.02] active:scale-[0.98] glow-ribbon shine-sweep gradient-slide-btn"
                 >
                   <span>Analyse My Digital Growth</span>
                   <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
@@ -411,8 +413,8 @@ function ScoreReport({ data, reduced }: { data: ScoreResponse; reduced: boolean 
     >
       {/* Overall score */}
       <div className="flex flex-col items-center gap-3 rounded-3xl border border-ink/10 bg-white p-6 text-center shadow-[0_24px_80px_-32px_rgba(46,75,254,0.45)] sm:p-8">
-        <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-ink/50">
-          Overall Digital Growth Score™ for {data.url}
+        <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-ink/50 max-w-full break-all text-center">
+          Overall Digital Growth Score™ for <span className="text-ink font-bold">{data.url}</span>
         </p>
         <div className="relative">
           <p className="text-ribbon font-mono text-6xl font-extrabold tabular sm:text-7xl">{displayScore}</p>
@@ -511,11 +513,11 @@ function ScoreReport({ data, reduced }: { data: ScoreResponse; reduced: boolean 
           Suggested next step
         </p>
         <p className="mb-6 text-balance text-lg font-semibold text-ink sm:text-xl">{data.nextStep}</p>
-        <div className="flex flex-wrap items-center gap-3">
-          <CtaButton href="#contact" variant="primary">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <CtaButton href="#contact" variant="primary" className="w-full sm:w-auto">
             Get your Growth Blueprint →
           </CtaButton>
-          <CtaButton href="#contact" variant="ghost">
+          <CtaButton href="#contact" variant="ghost" className="w-full sm:w-auto">
             Book a Strategy Session →
           </CtaButton>
         </div>

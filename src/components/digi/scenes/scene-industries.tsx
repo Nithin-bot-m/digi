@@ -171,7 +171,7 @@ export function SceneIndustries() {
                 <p className="text-xs font-semibold uppercase tracking-wider text-mist/50">
                   {active.shortLabel} customer journey
                 </p>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   {active.journey.map((step, i) => (
                     <React.Fragment key={step}>
                       <motion.span
@@ -205,7 +205,7 @@ export function SceneIndustries() {
               <p className="text-xs text-mist/50">
                 Switch sectors above to see how the journey and capabilities relabel.
               </p>
-              <CtaButton href="#contact" variant="primary">
+              <CtaButton href="#contact" variant="primary" className="w-full sm:w-auto">
                 Talk to Digi∞Artha about {active.shortLabel} →
               </CtaButton>
             </div>

@@ -145,7 +145,7 @@ export function CtaButton({
         }
       }}
       className={cn(
-        'group relative inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 active:scale-[0.98] active:translate-y-0.5',
+        'group relative inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full px-5 py-2.5 text-center text-sm font-semibold max-w-full transition-all duration-300 active:scale-[0.98] active:translate-y-0.5',
         styles,
         className,
       )}
@@ -191,7 +191,7 @@ export function GlassNode({
       <Wrapper
         onClick={onClick}
         className={cn(
-          'glass-dark shine-sweep relative flex h-full w-full flex-col gap-3 rounded-2xl p-5 text-left transition-all duration-300',
+          'glass-dark shine-sweep relative flex h-full w-full flex-col gap-3 rounded-2xl p-4 sm:p-5 text-left transition-all duration-300',
           onClick && 'cursor-pointer hover:border-white/20 hover:shadow-[0_16px_50px_-10px_rgba(46,75,254,0.35)]',
         )}
         style={{ boxShadow: `0 0 0 1px ${accentColor}28, 0 12px 40px -12px ${accentColor}55` }}
@@ -210,7 +210,7 @@ export function GlassNode({
             style={{ background: accentColor, color: accentColor, boxShadow: `0 0 12px ${accentColor}` }}
           />
         </div>
-        <h3 className="text-lg font-bold text-mist">{title}</h3>
+        <h3 className="text-base sm:text-lg font-bold text-mist">{title}</h3>
         {children}
       </Wrapper>
     </motion.div>
@@ -235,6 +235,17 @@ export function SidePanel({
   children: React.ReactNode
 }) {
   const reduced = useReducedMotion()
+
+  React.useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = prev
+      }
+    }
+  }, [open])
+
   return (
     <AnimatePresence>
       {open && (
@@ -257,19 +268,19 @@ export function SidePanel({
             aria-modal="true"
           >
             <div
-              className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-ink-deep/80 p-5 backdrop-blur"
+              className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-ink-deep/80 p-4 sm:p-5 backdrop-blur"
               style={{ boxShadow: `inset 0 -2px 0 ${accent}` }}
             >
-              <h3 className="text-lg font-bold text-mist">{title}</h3>
+              <h3 className="text-base sm:text-lg font-bold text-mist">{title}</h3>
               <button
                 onClick={onClose}
-                className="rounded-md p-1.5 text-mist/70 hover:bg-white/10 hover:text-mist"
+                className="flex h-11 w-11 items-center justify-center rounded-xl p-2 text-mist/70 hover:bg-white/10 hover:text-mist active:scale-95 transition-transform"
                 aria-label="Close panel"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="p-6 text-sm text-mist/80">{children}</div>
+            <div className="p-5 sm:p-6 pb-28 text-sm text-mist/80">{children}</div>
           </motion.aside>
         </>
       )}
@@ -302,14 +313,14 @@ export function Table({ rows, tone = 'dark' }: { rows: [string, React.ReactNode]
   const border = tone === 'dark' ? 'border-white/10' : 'border-ink/10'
   return (
     <div className={cn('overflow-hidden rounded-2xl border', border)}>
-      <table className="w-full text-left text-sm">
+      <table className="w-full text-left text-xs sm:text-sm">
         <tbody>
           {rows.map(([k, v], i) => (
             <tr key={i} className={cn(i > 0 && 'border-t', border)}>
-              <td className={cn('w-1/3 px-4 py-3 align-top text-xs font-semibold uppercase tracking-wider', head)}>
+              <td className={cn('w-1/3 px-3 py-2.5 sm:px-4 sm:py-3 align-top text-[11px] sm:text-xs font-semibold uppercase tracking-wider', head)}>
                 {k}
               </td>
-              <td className={cn('px-4 py-3 align-top', cell)}>{v}</td>
+              <td className={cn('px-3 py-2.5 sm:px-4 sm:py-3 align-top', cell)}>{v}</td>
             </tr>
           ))}
         </tbody>

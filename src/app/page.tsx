@@ -13,7 +13,6 @@ import { ShimmerButton } from '@/components/ui/shimmer-button'
 import { SpotlightCard } from '@/components/ui/spotlight-card'
 import { BorderBeam } from '@/components/ui/border-beam'
 import { InteractiveGrowthCalculator } from '@/components/digi/interactive-growth-calculator'
-import { MobileActionBar } from '@/components/digi/mobile-action-bar'
 
 /**
  * Home — the curated Digi∞Artha landing.
@@ -67,9 +66,6 @@ export default function Home() {
       {/* Scene 18 — Final CTA                                          */}
       {/* ============================================================ */}
       <FinalCta />
-
-      {/* Mobile Floating Action Pill (Mobbin / Refero pattern) */}
-      <MobileActionBar />
     </>
   )
 }
@@ -101,7 +97,7 @@ function Hero() {
         initial={reduced ? undefined : { opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35, duration: 0.7, ease: 'easeOut' }}
-        className="relative z-10 mt-5 max-w-4xl text-balance text-5xl font-extrabold leading-[1.02] text-mist sm:text-6xl lg:text-7xl"
+        className="relative z-10 mt-5 max-w-4xl text-balance text-4xl font-extrabold leading-[1.04] text-mist sm:text-6xl lg:text-7xl"
       >
         Turn Digital Into <span className="text-ribbon text-glow-ribbon">Measurable Growth.</span>
       </motion.h1>
@@ -130,14 +126,14 @@ function Hero() {
         initial={reduced ? undefined : { opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.85, duration: 0.6, ease: 'easeOut' }}
-        className="relative z-10 mt-8 flex flex-col items-center gap-3 sm:flex-row"
+        className="relative z-10 mt-8 flex flex-col w-full sm:w-auto items-center justify-center gap-3 sm:flex-row"
       >
-        <ShimmerButton href="/growth-score" className="px-7 py-3.5 text-sm sm:text-base">
+        <ShimmerButton href="/growth-score" className="w-full sm:w-auto px-7 py-3.5 text-sm sm:text-base">
           Get Your Digital Growth Score
         </ShimmerButton>
         <Link
           href="/contact"
-          className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-mist backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/35 active:scale-[0.98]"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-mist backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/35 active:scale-[0.98]"
         >
           Talk to a Growth Strategist
           <CtaArrow />
@@ -421,7 +417,7 @@ function FinalCta() {
         <InfinityLogo className="block" strokeWidth={36} glow withSparkle withArrowhead />
       </div>
       <div className="relative mx-auto max-w-4xl px-4">
-        <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink-deep/90 p-8 sm:p-14 backdrop-blur-2xl shadow-[0_20px_80px_-20px_rgba(123,63,254,0.4)]">
+        <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink-deep/90 p-6 sm:p-12 lg:p-14 backdrop-blur-2xl shadow-[0_20px_80px_-20px_rgba(123,63,254,0.4)]">
           <BorderBeam size={360} duration={14} colorFrom="#02A3FE" colorTo="#FF8E2D" />
           <h2 className="text-balance text-3xl font-extrabold leading-tight text-mist sm:text-4xl lg:text-5xl">
             Your next stage of growth starts with clarity.
@@ -430,13 +426,13 @@ function FinalCta() {
             Understand where you&rsquo;re strong. Find what&rsquo;s holding you back. Build the system.
             Measure the outcome. Scale what works.
           </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <ShimmerButton href="/growth-score" className="px-8 py-3.5 text-base">
+          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center justify-center gap-3.5">
+            <ShimmerButton href="/growth-score" className="w-full sm:w-auto px-8 py-3.5 text-base">
               Get Your Digital Growth Score
             </ShimmerButton>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-mist hover:bg-white/10 transition-all active:scale-[0.98]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-mist hover:bg-white/10 transition-all active:scale-[0.98]"
             >
               Talk to Digi∞Artha <CtaArrow />
             </Link>

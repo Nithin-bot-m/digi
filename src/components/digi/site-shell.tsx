@@ -4,14 +4,13 @@ import * as React from 'react'
 import { usePathname } from 'next/navigation'
 import { SiteHeader } from '@/components/digi/site-header'
 import { SiteFooter } from '@/components/digi/site-footer'
-import { ProgressRail } from '@/components/digi/progress-rail'
 import { AnalyticsScript, ConsentBanner } from '@/components/digi/analytics'
+import { MobileActionBar } from '@/components/digi/mobile-action-bar'
 
 /**
  * SiteShell — shared chrome for every route.
- * Renders the sticky header, sticky footer (mt-auto), the left progress
- * rail (homepage only), the GA4 analytics script (consent-gated), and the
- * cookie consent banner (only when GA is enabled).
+ * Renders the sticky header, sticky footer (mt-auto), the GA4 analytics script
+ * (consent-gated), mobile action bar, and the cookie consent banner.
  *
  * Scrolls to top on route change (so navigating to a subpage doesn't inherit
  * the previous scroll position).
@@ -25,15 +24,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
     }
   }, [pathname])
 
-  // Progress rail only makes sense on the long-scroll homepage.
-  const showRail = pathname === '/'
-
   return (
     <div id="top" className="page-shell bg-ink">
       <SiteHeader />
-      {showRail && <ProgressRail />}
       <main className="relative z-10 flex-1">{children}</main>
       <SiteFooter />
+      <MobileActionBar />
       <AnalyticsScript />
       <ConsentBanner />
     </div>

@@ -77,6 +77,17 @@ export function SiteHeader() {
     setOpen(false)
   }, [pathname])
 
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
@@ -145,14 +156,14 @@ export function SiteHeader() {
           </Link>
           <button
             className={cn(
-              'inline-flex items-center justify-center rounded-lg p-2 transition-colors lg:hidden',
+              'inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl p-2.5 transition-colors lg:hidden',
               isLight ? 'text-ink hover:bg-ink/5' : 'text-mist hover:bg-white/5',
             )}
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
@@ -161,7 +172,7 @@ export function SiteHeader() {
         {open && (
           <motion.nav
             className={cn(
-              'lg:hidden border-t px-4 py-6 shadow-2xl backdrop-blur-2xl transition-colors',
+              'lg:hidden border-t px-4 py-6 shadow-2xl backdrop-blur-2xl transition-colors max-h-[calc(100dvh-72px)] overflow-y-auto overscroll-contain pb-10',
               isLight
                 ? 'border-ink/10 bg-white/95 text-ink'
                 : 'border-white/10 bg-ink-deep/98 text-mist',

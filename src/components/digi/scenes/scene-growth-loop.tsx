@@ -102,7 +102,7 @@ export function SceneGrowthLoop() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
         transition={{ duration: 0.8 }}
-        className="relative mt-10 flex h-[340px] items-center justify-center sm:h-[420px]"
+        className="relative mt-10 flex h-[340px] items-center justify-center overflow-hidden sm:h-[420px]"
       >
         {/* Background nested loops — fade/scale in on view */}
         <motion.div

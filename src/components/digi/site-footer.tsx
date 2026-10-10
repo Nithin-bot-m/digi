@@ -48,7 +48,7 @@ const LEGAL = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-auto overflow-hidden stage-ink text-mist/80">
+    <footer className="relative mt-auto overflow-hidden stage-ink text-mist/80 pb-20 sm:pb-0">
       {/* Ambient Infinity Ribbon Loop in Footer - transparent, ethereal, positioned down so whole loop is framed */}
       <div
         className="pointer-events-none absolute inset-x-0 bottom-4 top-20 sm:top-24 z-0 flex items-center justify-center opacity-20 sm:opacity-25"
@@ -70,20 +70,20 @@ export function SiteFooter() {
             <Tagline variant="dark" className="mt-4" />
             <Link
               href="/growth-score"
-              className="mt-6 inline-flex items-center gap-1.5 rounded-full bg-ribbon px-4 py-2 text-sm font-semibold text-white glow-ribbon"
+              className="mt-6 inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-ribbon px-4 py-2 text-sm font-semibold text-white glow-ribbon active:scale-[0.98]"
             >
               Get Your Digital Growth Score →
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 lg:col-span-6 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:col-span-6 lg:grid-cols-3">
             {COLS.map((col) => (
               <nav key={col.title} aria-label={col.title}>
                 <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-mist/50">{col.title}</h3>
                 <ul className="mt-3 space-y-2">
                   {col.links.map((l) => (
                     <li key={l.href}>
-                      <Link href={l.href} className="text-sm text-mist/70 transition hover:text-mist">
+                      <Link href={l.href} className="inline-block py-1 text-sm text-mist/70 transition hover:text-mist">
                         {l.label}
                       </Link>
                     </li>
@@ -97,12 +97,12 @@ export function SiteFooter() {
             <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-mist/50">Contact</h3>
             <ul className="mt-3 space-y-2 text-sm text-mist/70">
               <li>
-                <Link href="/contact" className="hover:text-mist">
+                <Link href="/contact" className="inline-block py-1 hover:text-mist">
                   Start a conversation
                 </Link>
               </li>
               <li>
-                <Link href="/growth-score" className="hover:text-mist">
+                <Link href="/growth-score" className="inline-block py-1 hover:text-mist">
                   Request a proposal
                 </Link>
               </li>
@@ -114,9 +114,9 @@ export function SiteFooter() {
 
         <div className="flex flex-col items-start justify-between gap-4 text-xs text-mist/50 sm:flex-row sm:items-center">
           <p>© {new Date().getFullYear()} Digi∞Artha. Digital. Measurable. Growth.</p>
-          <nav className="flex items-center gap-5">
+          <nav className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {LEGAL.map((l) => (
-              <Link key={l.href} href={l.href} className="transition hover:text-mist">
+              <Link key={l.href} href={l.href} className="py-1 transition hover:text-mist">
                 {l.label}
               </Link>
             ))}

@@ -38,7 +38,7 @@ export function ProgressRail() {
         <div className="relative flex flex-col gap-1">
           {STAGES.map((s, i) => {
             const isActive = active === s.id
-            const isPast = TRACK_IDS.indexOf(active ?? '') > i
+            const isPast = (TRACK_IDS as readonly string[]).indexOf(active ?? '') > i
             return (
               <button
                 key={s.id}

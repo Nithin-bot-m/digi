@@ -528,7 +528,7 @@ export function SectionPillars() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
         transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-mist/65"
+        className="mt-3 inline-flex flex-wrap items-center gap-1.5 sm:gap-2 rounded-2xl sm:rounded-full border border-white/10 bg-white/5 px-3.5 py-2 sm:py-1.5 text-xs text-mist/65 leading-relaxed max-w-full"
       >
         <span className="font-semibold text-mist">Note</span>
         <span aria-hidden>·</span>

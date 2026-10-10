@@ -74,7 +74,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
   return (
     <div
       className={cn(
-        'relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-ink-deep/90 p-6 backdrop-blur-2xl sm:p-10 lg:p-12',
+        'relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-ink-deep/90 p-4 backdrop-blur-2xl sm:p-8 lg:p-12',
         'shadow-[0_20px_80px_-20px_rgba(46,75,254,0.35)]',
         className,
       )}
@@ -115,7 +115,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   type="button"
                   onClick={() => setIndustry(item.id)}
                   className={cn(
-                    'rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
+                    'flex min-h-[40px] items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
                     industry === item.id
                       ? 'border-cyan bg-cyan/15 text-mist shadow-[0_0_15px_rgba(2,163,254,0.3)]'
                       : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
@@ -144,7 +144,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   type="button"
                   onClick={() => setSpend(item.id)}
                   className={cn(
-                    'rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
+                    'flex min-h-[40px] items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
                     spend === item.id
                       ? 'border-royal bg-royal/20 text-mist shadow-[0_0_15px_rgba(46,75,254,0.3)]'
                       : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
@@ -173,7 +173,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   type="button"
                   onClick={() => setConvRate(item.id)}
                   className={cn(
-                    'rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
+                    'flex min-h-[40px] items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
                     convRate === item.id
                       ? 'border-magenta bg-magenta/20 text-mist shadow-[0_0_15px_rgba(233,59,242,0.3)]'
                       : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
@@ -190,7 +190,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
             <label className="text-xs font-semibold uppercase tracking-wider text-mist/60">
               4. Immediate Growth Objective
             </label>
-            <div className="mt-2 grid grid-cols-2 gap-2">
+            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
               {[
                 { id: 'performance', label: '⚡ Lower CAC & Scale Spend' },
                 { id: 'ai-search', label: '🤖 Dominate AI Overviews' },
@@ -202,7 +202,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   type="button"
                   onClick={() => setFocus(item.id)}
                   className={cn(
-                    'rounded-xl border px-3 py-2.5 text-left text-xs font-medium transition-all duration-200',
+                    'flex min-h-[42px] items-center rounded-xl border px-3.5 py-2.5 text-left text-xs font-medium transition-all duration-200',
                     focus === item.id
                       ? 'border-coral bg-coral/15 text-mist shadow-[0_0_15px_rgba(255,84,77,0.3)]'
                       : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',

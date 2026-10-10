@@ -84,7 +84,7 @@ export function SceneBecomeAnswer() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-        <CtaButton href="#solutions" variant="primary">
+        <CtaButton href="#solutions" variant="primary" className="w-full sm:w-auto">
           Improve My Search Visibility →
         </CtaButton>
       </div>
@@ -101,15 +101,15 @@ function AnswerTransform({ reduced }: { reduced: boolean }) {
         whileInView={reduced ? undefined : { opacity: 1, y: 0 }}
         viewport={VIEWPORT}
         transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="glass-dark relative flex items-center gap-3 rounded-2xl px-4 py-3.5"
+        className="glass-dark relative flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 rounded-2xl px-4 py-3.5"
         style={{ boxShadow: `0 0 0 1px ${ACCENT}33, 0 12px 40px -16px ${ACCENT}55` }}
       >
-        <Search className="h-4 w-4 text-mist/60" />
-        <p className="text-sm text-mist/80">
+        <Search className="h-4 w-4 shrink-0 text-mist/60" />
+        <p className="min-w-0 flex-1 text-xs sm:text-sm text-mist/80">
           <span className="text-mist/55">example query — </span>
           best growth marketing partner for b2b saas
         </p>
-        <Illustrative className="ml-auto" />
+        <Illustrative className="shrink-0" />
       </motion.div>
 
       {/* Transform arrow / shimmer */}

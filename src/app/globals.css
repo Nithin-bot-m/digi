@@ -135,23 +135,44 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
   }
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
+    max-width: 100%;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "ss01", "cv11";
+    overflow-x: clip;
+    max-width: 100%;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   h1, h2, h3, h4, h5 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    line-height: 1.05;
+    line-height: 1.08;
+    overflow-wrap: break-word;
   }
   .tabular {
     font-variant-numeric: tabular-nums;
+  }
+  /* Prevent iOS Safari automatic zoom on inputs */
+  @media screen and (max-width: 639px) {
+    input:not([type="checkbox"]):not([type="radio"]),
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
   }
 }
 
@@ -570,5 +591,30 @@
 }
 .glow-pulse-heading {
   animation: aura-pulse 4.5s ease-in-out infinite;
+}
+
+/* Mobile Safe-Area & Touch Optimization */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+}
+.safe-top {
+  padding-top: max(1rem, env(safe-area-inset-top, 0px));
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ensure minimum touch target for interactive elements on coarse pointers */
+@media (pointer: coarse) {
+  button, 
+  a, 
+  input[type="button"], 
+  input[type="submit"] {
+    min-height: 40px;
+  }
 }
 

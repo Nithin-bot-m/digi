@@ -84,75 +84,99 @@ export function SceneBeFound() {
 }
 
 function OrbitSet({ reduced }: { reduced: boolean }) {
-  // Mobile: 2-col grid always. Desktop: orbit.
   if (reduced) {
-    return <PlatformGrid />
+    return (
+      <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-5">
+        {PLATFORMS.map((p) => {
+          const { name, Icon, color } = p
+          return (
+            <div
+              key={name}
+              className="glass-light flex items-center gap-3 rounded-2xl p-3.5 text-ink"
+              style={{ boxShadow: `0 0 0 1px ${color}22, 0 6px 20px -10px ${color}55` }}
+            >
+              <span
+                className="inline-flex h-9 w-9 items-center justify-center rounded-xl"
+                style={{ background: `${color}1A` }}
+              >
+                <Icon className="h-5 w-5" style={{ color }} />
+              </span>
+              <span className="text-sm font-semibold text-ink/80">{name}</span>
+            </div>
+          )
+        })}
+      </div>
+    )
   }
 
   return (
-    <div className="relative mt-14 hidden min-h-[460px] sm:block lg:min-h-[520px]">
-      <div className="absolute inset-0 flex items-center justify-center">
-        {/* Concentric orbit rings */}
-        {[1, 2, 3].map((ring) => (
-          <div
-            key={ring}
-            className="absolute rounded-full border border-ink/10"
-            style={{
-              width: `${ring * 240}px`,
-              height: `${ring * 240}px`,
-            }}
-            aria-hidden="true"
-          />
-        ))}
+    <>
+      <div className="relative mt-14 hidden min-h-[460px] sm:block lg:min-h-[520px]">
+        <div className="absolute inset-0 flex items-center justify-center">
+          {/* Concentric orbit rings */}
+          {[1, 2, 3].map((ring) => (
+            <div
+              key={ring}
+              className="absolute rounded-full border border-ink/10"
+              style={{
+                width: `${ring * 240}px`,
+                height: `${ring * 240}px`,
+              }}
+              aria-hidden="true"
+            />
+          ))}
 
-        {/* Central "Your brand" node */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.7 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative z-20 flex h-32 w-32 flex-col items-center justify-center rounded-full bg-ink text-center text-mist shadow-2xl"
-          style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.06), 0 20px 60px -10px rgba(46,75,254,0.5)' }}
-        >
-          <span className="text-3xl font-extrabold text-ribbon">∞</span>
-          <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-mist/70">
-            Your brand
-          </span>
-        </motion.div>
+          {/* Central "Your brand" node */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="relative z-20 flex h-32 w-32 flex-col items-center justify-center rounded-full bg-ink text-center text-mist shadow-2xl"
+            style={{ boxShadow: '0 0 0 1px rgba(255,255,255,0.06), 0 20px 60px -10px rgba(46,75,254,0.5)' }}
+          >
+            <span className="text-3xl font-extrabold text-ribbon">∞</span>
+            <span className="mt-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-mist/70">
+              Your brand
+            </span>
+          </motion.div>
 
-        {/* Orbiting tiles — distributed across 3 rings */}
-        <div className="absolute inset-0">
-          {PLATFORMS.map((p, i) => {
-            const ringIdx = i % 3 // 0,1,2 → which ring
-            const radius = 120 + ringIdx * 120 // 120 / 240 / 360
-            // angle: distribute around full circle
-            const angle = (i / PLATFORMS.length) * Math.PI * 2
-            const x = Math.cos(angle) * radius
-            const y = Math.sin(angle) * radius
-            return (
-              <motion.div
-                key={p.name}
-                className="absolute left-1/2 top-1/2"
-                style={{
-                  ['--orbit-r' as string]: `${radius}px`,
-                  transform: `translate(${x - 36}px, ${y - 36}px)`,
-                }}
-                initial={{ opacity: 0, scale: 0.6 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
-                transition={{
-                  duration: 0.55,
-                  ease: 'easeOut',
-                  delay: 0.2 + i * 0.06,
-                }}
-              >
-                <OrbitTile platform={p} />
-              </motion.div>
-            )
-          })}
+          {/* Orbiting tiles — distributed across 3 rings */}
+          <div className="absolute inset-0">
+            {PLATFORMS.map((p, i) => {
+              const ringIdx = i % 3 // 0,1,2 → which ring
+              const radius = 120 + ringIdx * 120 // 120 / 240 / 360
+              // angle: distribute around full circle
+              const angle = (i / PLATFORMS.length) * Math.PI * 2
+              const x = Math.cos(angle) * radius
+              const y = Math.sin(angle) * radius
+              return (
+                <motion.div
+                  key={p.name}
+                  className="absolute left-1/2 top-1/2"
+                  style={{
+                    ['--orbit-r' as string]: `${radius}px`,
+                    transform: `translate(${x - 36}px, ${y - 36}px)`,
+                  }}
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
+                  transition={{
+                    duration: 0.55,
+                    ease: 'easeOut',
+                    delay: 0.2 + i * 0.06,
+                  }}
+                >
+                  <OrbitTile platform={p} />
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </div>
-    </div>
+
+      <PlatformGrid />
+    </>
   )
 }
 

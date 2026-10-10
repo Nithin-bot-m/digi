@@ -82,13 +82,13 @@ export function SceneCaseStudies() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-15% 0px -10% 0px' }}
         transition={{ duration: 0.55, ease: 'easeOut' }}
-        className="mt-12 overflow-hidden rounded-3xl border border-ink/10 bg-white p-6 shadow-[0_24px_80px_-32px_rgba(46,75,254,0.35)] sm:p-8"
+        className="mt-12 overflow-hidden rounded-3xl border border-ink/10 bg-white p-5 shadow-[0_24px_80px_-32px_rgba(46,75,254,0.35)] sm:p-8"
       >
         <div className="mb-4 flex items-center justify-between gap-3">
           <h3 className="text-sm font-semibold uppercase tracking-wider text-ink/50">Case-study schema preview</h3>
           <span className="font-mono text-[11px] uppercase tracking-wider text-ink/40">8 blocks + CTA</span>
         </div>
-        <ol className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+        <ol className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {SCHEMA_BLOCKS.map((b, i) => (
             <li
               key={b.label}
@@ -154,7 +154,7 @@ export function SceneCaseStudies() {
       </div>
 
       <div className="mt-12 flex justify-center">
-        <CtaButton href="#contact" variant="light">
+        <CtaButton href="#contact" variant="light" className="w-full sm:w-auto">
           Solve a Similar Growth Challenge →
         </CtaButton>
       </div>

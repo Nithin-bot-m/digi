@@ -100,64 +100,94 @@ function FragmentsToRibbon({ reduced }: { reduced: boolean }) {
   }
 
   return (
-    <div
-      className="relative mt-12 h-64 sm:h-56"
-      role="img"
-      aria-label="Disconnected channel fragments snapping onto the Digi∞Artha growth ribbon"
-    >
-      {/* The horizontal ribbon line that fragments will snap onto */}
-      <motion.div
-        className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-ribbon glow-ribbon"
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={VIEWPORT}
-        transition={{ duration: 1.0, ease: 'easeOut', delay: 0.4 }}
-        style={{ transformOrigin: 'left center' }}
-      />
-
-      {/* Fragments: start scattered (above/below the line), snap onto the line in sequence */}
-      <div className="absolute inset-0">
-        {FRAGMENTS.map((f, i) => {
-          // distribute across horizontal axis
-          const leftPct = 8 + i * (84 / (FRAGMENTS.length - 1))
-          // initial scatter: alternate above / below the line
-          const above = i % 2 === 0
-          const scatterY = above ? -80 - (i % 3) * 16 : 60 + (i % 3) * 16
-          const rotate = above ? -8 - (i % 5) * 3 : 6 + (i % 5) * 3
-          return (
+    <>
+      {/* Mobile-optimized view: 2-column interactive chip grid with ribbon */}
+      <div className="relative mt-8 sm:hidden">
+        <div className="relative h-1 w-full rounded-full bg-ribbon glow-ribbon mb-6" />
+        <div className="grid grid-cols-2 gap-2.5">
+          {FRAGMENTS.map((f, i) => (
             <motion.div
               key={f.label}
-              className="absolute top-1/2 -translate-y-1/2"
-              style={{ left: `${leftPct}%` }}
-              initial={{ y: scatterY, opacity: 0, rotate, scale: 0.6 }}
-              whileInView={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={VIEWPORT}
-              transition={{
-                duration: 0.9,
-                ease: 'easeOut',
-                delay: 0.6 + i * 0.12,
-                type: 'spring',
-                stiffness: 120,
-                damping: 14,
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              className="glass-dark flex items-center gap-2.5 rounded-xl p-3 text-xs font-semibold text-mist"
+              style={{
+                borderColor: `${f.color}55`,
+                boxShadow: `0 0 14px -2px ${f.color}44`,
               }}
             >
-              <FragmentChip color={f.color} label={f.label} />
+              <span
+                className="h-2.5 w-2.5 rounded-full shrink-0"
+                style={{ background: f.color, boxShadow: `0 0 8px ${f.color}` }}
+              />
+              <span className="truncate">{f.label}</span>
             </motion.div>
-          )
-        })}
+          ))}
+        </div>
       </div>
 
-      {/* Sparkle connectors — small dots that travel left-to-right while snapping */}
-      <motion.span
-        className="absolute top-1/2 left-0 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-mist"
-        initial={{ left: '0%', opacity: 0 }}
-        whileInView={{ left: '100%', opacity: [0, 1, 1, 0] }}
-        viewport={VIEWPORT}
-        transition={{ duration: 1.4, ease: 'easeInOut', delay: 0.4 }}
-        style={{ boxShadow: '0 0 12px rgba(255,255,255,0.85)' }}
-        aria-hidden="true"
-      />
-    </div>
+      {/* Desktop view: horizontal ribbon snap animation */}
+      <div
+        className="relative mt-12 hidden h-56 sm:block"
+        role="img"
+        aria-label="Disconnected channel fragments snapping onto the Digi∞Artha growth ribbon"
+      >
+        {/* The horizontal ribbon line that fragments will snap onto */}
+        <motion.div
+          className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-ribbon glow-ribbon"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={VIEWPORT}
+          transition={{ duration: 1.0, ease: 'easeOut', delay: 0.4 }}
+          style={{ transformOrigin: 'left center' }}
+        />
+
+        {/* Fragments: start scattered (above/below the line), snap onto the line in sequence */}
+        <div className="absolute inset-0">
+          {FRAGMENTS.map((f, i) => {
+            // distribute across horizontal axis
+            const leftPct = 8 + i * (84 / (FRAGMENTS.length - 1))
+            // initial scatter: alternate above / below the line
+            const above = i % 2 === 0
+            const scatterY = above ? -80 - (i % 3) * 16 : 60 + (i % 3) * 16
+            const rotate = above ? -8 - (i % 5) * 3 : 6 + (i % 5) * 3
+            return (
+              <motion.div
+                key={f.label}
+                className="absolute top-1/2 -translate-y-1/2"
+                style={{ left: `${leftPct}%` }}
+                initial={{ y: scatterY, opacity: 0, rotate, scale: 0.6 }}
+                whileInView={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
+                viewport={VIEWPORT}
+                transition={{
+                  duration: 0.9,
+                  ease: 'easeOut',
+                  delay: 0.6 + i * 0.12,
+                  type: 'spring',
+                  stiffness: 120,
+                  damping: 14,
+                }}
+              >
+                <FragmentChip color={f.color} label={f.label} />
+              </motion.div>
+            )
+          })}
+        </div>
+
+        {/* Sparkle connectors — small dots that travel left-to-right while snapping */}
+        <motion.span
+          className="absolute top-1/2 left-0 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-mist"
+          initial={{ left: '0%', opacity: 0 }}
+          whileInView={{ left: '100%', opacity: [0, 1, 1, 0] }}
+          viewport={VIEWPORT}
+          transition={{ duration: 1.4, ease: 'easeInOut', delay: 0.4 }}
+          style={{ boxShadow: '0 0 12px rgba(255,255,255,0.85)' }}
+          aria-hidden="true"
+        />
+      </div>
+    </>
   )
 }
 
