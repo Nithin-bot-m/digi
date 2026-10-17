@@ -63,7 +63,7 @@ export function SectionInsights() {
   const { toast } = useToast()
   const [email, setEmail] = React.useState('')
 
-  const onNotify = (e: React.FormEvent) => {
+  const onNotify = async (e: React.FormEvent) => {
     e.preventDefault()
     const v = email.trim()
     if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
@@ -73,6 +73,23 @@ export function SectionInsights() {
       })
       return
     }
+
+    try {
+      await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: 'Insights Subscriber',
+          email: v,
+          topic: 'Insights & Content Subscription',
+          message: 'Requested notification when Digi∞Artha Insights publishes new analysis.',
+          source: 'insights-subscription',
+        }),
+      })
+    } catch {
+      // Non-blocking UI toast
+    }
+
     toast({
       title: 'You are on the list.',
       description: 'We will email you when the first Digi∞Artha Insights pieces publish.',

@@ -66,8 +66,8 @@ export function SpotlightCard({
         transition: 'transform 0.2s cubic-bezier(0.2, 0, 0, 1)',
       }}
       className={cn(
-        'group relative overflow-hidden rounded-2xl border border-white/10 bg-ink-deep/80 p-6 backdrop-blur-xl transition-all duration-300',
-        'hover:border-white/20 hover:shadow-[0_12px_40px_-10px_rgba(46,75,254,0.3)]',
+        'group relative overflow-hidden rounded-2xl border border-ink/10 dark:border-white/10 bg-white/95 dark:bg-ink-deep/80 p-6 backdrop-blur-xl transition-all duration-300 text-ink dark:text-mist shadow-xs dark:shadow-none',
+        'hover:border-ink/20 dark:hover:border-white/20 hover:shadow-[0_12px_40px_-10px_rgba(46,75,254,0.15)] dark:hover:shadow-[0_12px_40px_-10px_rgba(46,75,254,0.3)]',
         onClick && 'cursor-pointer',
         className,
       )}

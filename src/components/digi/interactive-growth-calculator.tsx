@@ -74,8 +74,8 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
   return (
     <div
       className={cn(
-        'relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-white/15 bg-ink-deep/90 p-4 backdrop-blur-2xl sm:p-8 lg:p-12',
-        'shadow-[0_20px_80px_-20px_rgba(46,75,254,0.35)]',
+        'relative mx-auto w-full max-w-5xl overflow-hidden rounded-3xl border border-ink/10 dark:border-white/15 bg-white/95 dark:bg-ink-deep/90 p-4 backdrop-blur-2xl sm:p-8 lg:p-12',
+        'shadow-[0_20px_60px_-15px_rgba(0,19,49,0.08)] dark:shadow-[0_20px_80px_-20px_rgba(46,75,254,0.35)]',
         className,
       )}
     >
@@ -87,10 +87,10 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
           <Sparkles className="h-3.5 w-3.5" />
           Interactive Assessment Tool
         </span>
-        <h3 className="mt-3 text-2xl font-extrabold text-mist sm:text-4xl">
+        <h3 className="mt-3 text-2xl font-extrabold text-ink dark:text-mist sm:text-4xl">
           Simulate Your <span className="text-ribbon">Digital Growth Score™</span>
         </h3>
-        <p className="mt-2 max-w-xl text-sm text-mist/70 sm:text-base">
+        <p className="mt-2 max-w-xl text-sm text-ink/70 dark:text-mist/70 sm:text-base">
           See how your brand stacks up across AI visibility, ad economics, conversion friction, and lifecycle growth.
         </p>
       </div>
@@ -100,7 +100,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
         <div className="flex flex-col gap-5 lg:col-span-7">
           {/* Industry */}
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wider text-mist/60">
+            <label className="text-xs font-semibold uppercase tracking-wider text-ink/60 dark:text-mist/60">
               1. Industry Category
             </label>
             <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -117,8 +117,8 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   className={cn(
                     'flex min-h-[40px] items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
                     industry === item.id
-                      ? 'border-cyan bg-cyan/15 text-mist shadow-[0_0_15px_rgba(2,163,254,0.3)]'
-                      : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
+                      ? 'border-cyan bg-cyan/15 text-cyan-950 dark:text-mist shadow-[0_0_15px_rgba(2,163,254,0.25)] font-semibold'
+                      : 'border-ink/10 bg-slate-100/70 text-ink/80 hover:border-ink/25 hover:text-ink hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-mist/70 dark:hover:border-white/20 dark:hover:text-mist',
                   )}
                 >
                   {item.label}
@@ -129,7 +129,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
 
           {/* Monthly Spend */}
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wider text-mist/60">
+            <label className="text-xs font-semibold uppercase tracking-wider text-ink/60 dark:text-mist/60">
               2. Monthly Growth Budget
             </label>
             <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -146,8 +146,8 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   className={cn(
                     'flex min-h-[40px] items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
                     spend === item.id
-                      ? 'border-royal bg-royal/20 text-mist shadow-[0_0_15px_rgba(46,75,254,0.3)]'
-                      : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
+                      ? 'border-royal bg-royal/15 text-blue-950 dark:text-mist shadow-[0_0_15px_rgba(46,75,254,0.25)] font-semibold'
+                      : 'border-ink/10 bg-slate-100/70 text-ink/80 hover:border-ink/25 hover:text-ink hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-mist/70 dark:hover:border-white/20 dark:hover:text-mist',
                   )}
                 >
                   {item.label}
@@ -158,7 +158,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
 
           {/* Current Conversion Rate */}
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wider text-mist/60">
+            <label className="text-xs font-semibold uppercase tracking-wider text-ink/60 dark:text-mist/60">
               3. Current Site Conversion Rate
             </label>
             <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -175,8 +175,8 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   className={cn(
                     'flex min-h-[40px] items-center justify-center rounded-xl border px-3 py-2 text-xs font-medium transition-all duration-200',
                     convRate === item.id
-                      ? 'border-magenta bg-magenta/20 text-mist shadow-[0_0_15px_rgba(233,59,242,0.3)]'
-                      : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
+                      ? 'border-magenta bg-magenta/15 text-fuchsia-950 dark:text-mist shadow-[0_0_15px_rgba(233,59,242,0.25)] font-semibold'
+                      : 'border-ink/10 bg-slate-100/70 text-ink/80 hover:border-ink/25 hover:text-ink hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-mist/70 dark:hover:border-white/20 dark:hover:text-mist',
                   )}
                 >
                   {item.label}
@@ -187,7 +187,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
 
           {/* Primary Bottleneck */}
           <div>
-            <label className="text-xs font-semibold uppercase tracking-wider text-mist/60">
+            <label className="text-xs font-semibold uppercase tracking-wider text-ink/60 dark:text-mist/60">
               4. Immediate Growth Objective
             </label>
             <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -204,8 +204,8 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                   className={cn(
                     'flex min-h-[42px] items-center rounded-xl border px-3.5 py-2.5 text-left text-xs font-medium transition-all duration-200',
                     focus === item.id
-                      ? 'border-coral bg-coral/15 text-mist shadow-[0_0_15px_rgba(255,84,77,0.3)]'
-                      : 'border-white/10 bg-white/5 text-mist/70 hover:border-white/20 hover:text-mist',
+                      ? 'border-coral bg-coral/15 text-rose-950 dark:text-mist shadow-[0_0_15px_rgba(255,84,77,0.25)] font-semibold'
+                      : 'border-ink/10 bg-slate-100/70 text-ink/80 hover:border-ink/25 hover:text-ink hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-mist/70 dark:hover:border-white/20 dark:hover:text-mist',
                   )}
                 >
                   {item.label}
@@ -216,8 +216,8 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
         </div>
 
         {/* Right Output Gauge & Dimensions */}
-        <div className="flex flex-col items-center rounded-2xl border border-white/10 bg-ink-soft/80 p-6 text-center backdrop-blur-xl lg:col-span-5">
-          <p className="text-xs font-semibold uppercase tracking-widest text-mist/50">Estimated Score</p>
+        <div className="flex flex-col items-center rounded-2xl border border-ink/10 dark:border-white/10 bg-slate-50/90 dark:bg-ink-soft/80 p-6 text-center backdrop-blur-xl lg:col-span-5 shadow-xs dark:shadow-none">
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink/60 dark:text-mist/50">Estimated Score</p>
           
           {/* Animated Radial Score */}
           <div className="relative my-4 flex h-36 w-36 items-center justify-center">
@@ -226,7 +226,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
                 cx="50"
                 cy="50"
                 r="40"
-                className="stroke-white/10"
+                className="stroke-slate-200 dark:stroke-white/10"
                 strokeWidth="8"
                 fill="none"
               />
@@ -252,22 +252,22 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
               </defs>
             </svg>
             <div className="absolute flex flex-col items-center">
-              <span className="font-mono text-4xl font-extrabold text-mist">
+              <span className="font-mono text-4xl font-extrabold text-ink dark:text-mist">
                 <AnimatedCounter value={calculated.finalScore} />
               </span>
-              <span className="text-[10px] font-semibold uppercase tracking-wider text-mist/50">/ 100</span>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-ink/50 dark:text-mist/50">/ 100</span>
             </div>
           </div>
 
           {/* Quick Metrics */}
-          <div className="grid w-full grid-cols-2 gap-2 border-y border-white/10 py-3 text-center">
-            <div className="corner-brackets rounded-lg bg-white/[0.03] p-2 transition-colors hover:bg-white/[0.06]">
+          <div className="grid w-full grid-cols-2 gap-2 border-y border-ink/10 dark:border-white/10 py-3 text-center">
+            <div className="corner-brackets rounded-lg bg-ink/[0.03] dark:bg-white/[0.03] p-2 transition-colors hover:bg-ink/[0.06] dark:hover:bg-white/[0.06]">
               <p className="font-mono text-base font-bold text-cyan">+{calculated.potentialRoas}x</p>
-              <p className="text-[10px] uppercase tracking-wider text-mist/60">Target Scale Multiple</p>
+              <p className="text-[10px] uppercase tracking-wider text-ink/60 dark:text-mist/60">Target Scale Multiple</p>
             </div>
-            <div className="corner-brackets rounded-lg bg-white/[0.03] p-2 transition-colors hover:bg-white/[0.06]">
+            <div className="corner-brackets rounded-lg bg-ink/[0.03] dark:bg-white/[0.03] p-2 transition-colors hover:bg-ink/[0.06] dark:hover:bg-white/[0.06]">
               <p className="font-mono text-base font-bold text-coral">-{calculated.cacReduction}%</p>
-              <p className="text-[10px] uppercase tracking-wider text-mist/60">Achievable CAC Savings</p>
+              <p className="text-[10px] uppercase tracking-wider text-ink/60 dark:text-mist/60">Achievable CAC Savings</p>
             </div>
           </div>
 
@@ -275,11 +275,11 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
           <div className="mt-4 flex w-full flex-col gap-2.5 text-left">
             {calculated.dimensions.map((dim) => (
               <div key={dim.name}>
-                <div className="flex justify-between text-[11px] font-medium text-mist/80">
+                <div className="flex justify-between text-[11px] font-medium text-ink/80 dark:text-mist/80">
                   <span>{dim.name}</span>
-                  <span className="font-mono" style={{ color: dim.color }}>{dim.score}%</span>
+                  <span className="font-mono font-bold" style={{ color: dim.color }}>{dim.score}%</span>
                 </div>
-                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-white/10">
                   <motion.div
                     className="h-full rounded-full"
                     style={{ background: dim.color }}
@@ -297,7 +297,7 @@ export function InteractiveGrowthCalculator({ className }: { className?: string 
             <ShimmerButton href="#contact" className="w-full">
               Get Your Custom Growth Blueprint
             </ShimmerButton>
-            <p className="mt-2 text-[10px] text-mist/50">Free 48-Hour Growth Diagnostic • No Obligation</p>
+            <p className="mt-2 text-[10px] text-ink/50 dark:text-mist/50">Free 48-Hour Growth Diagnostic • No Obligation</p>
           </div>
         </div>
       </div>

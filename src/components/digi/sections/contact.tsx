@@ -189,11 +189,11 @@ export function SectionContact() {
           transition={{ duration: 0.55, ease: 'easeOut' }}
           className="flex flex-col gap-6"
         >
-          <div className="glass-dark relative overflow-hidden rounded-2xl border border-white/10 p-6">
+          <div className="glass-dark relative overflow-hidden rounded-2xl border border-ink/10 dark:border-white/10 p-6 shadow-xs dark:shadow-none">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cyan">
               Self-serve diagnostic
             </p>
-            <p className="mt-3 text-base leading-relaxed text-mist/80">
+            <p className="mt-3 text-base leading-relaxed text-ink/80 dark:text-mist/80">
               Want an instant baseline before our strategy call? Run the 10-dimension diagnostic in under 60 seconds.
             </p>
             <div className="mt-5">
@@ -203,11 +203,11 @@ export function SectionContact() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-mist/55">
+          <div className="rounded-2xl border border-ink/10 bg-white/90 dark:border-white/10 dark:bg-white/5 p-6 shadow-xs dark:shadow-none">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-ink/60 dark:text-mist/55">
               What happens next
             </p>
-            <ol className="mt-4 space-y-3 text-sm text-mist/75">
+            <ol className="mt-4 space-y-3 text-sm text-ink/75 dark:text-mist/75">
               <li className="flex gap-3">
                 <span className="font-mono text-cyan">01</span>
                 <span>A growth strategist reviews your message within one business day.</span>
@@ -243,10 +243,13 @@ export function SectionContact() {
           )}
 
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={(e) => {
+              e.preventDefault()
+              handleSubmit(onSubmit)(e)
+            }}
             onPointerDown={onFormStart}
             noValidate
-            className="glass-dark relative overflow-hidden flex flex-col gap-5 rounded-2xl p-4 sm:p-8"
+            className="glass-dark relative overflow-hidden flex flex-col gap-5 rounded-2xl p-4 sm:p-8 border border-ink/10 dark:border-white/10 shadow-xs dark:shadow-none"
             aria-label="Contact Digi∞Artha"
           >
             <BorderBeam size={250} duration={12} borderWidth={1.5} />
@@ -269,6 +272,7 @@ export function SectionContact() {
                   autoComplete="name"
                   placeholder="Your full name"
                   aria-invalid={!!errors.name}
+                  className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-input dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
                   {...register('name')}
                 />
               </Field>
@@ -280,6 +284,7 @@ export function SectionContact() {
                   autoComplete="email"
                   placeholder="you@work.com"
                   aria-invalid={!!errors.email}
+                  className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-input dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
                   {...register('email')}
                 />
               </Field>
@@ -290,6 +295,7 @@ export function SectionContact() {
                   type="tel"
                   autoComplete="tel"
                   placeholder="+91 90000 00000"
+                  className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-input dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
                   {...register('phone')}
                 />
               </Field>
@@ -299,6 +305,7 @@ export function SectionContact() {
                   id="company"
                   autoComplete="organization"
                   placeholder="Company name"
+                  className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-input dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
                   {...register('company')}
                 />
               </Field>
@@ -310,6 +317,7 @@ export function SectionContact() {
                   inputMode="url"
                   autoComplete="url"
                   placeholder="https://"
+                  className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-input dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
                   {...register('website')}
                 />
               </Field>
@@ -319,6 +327,7 @@ export function SectionContact() {
                   id="industry"
                   autoComplete="organization-title"
                   placeholder="e.g. B2B SaaS, EdTech, Real Estate"
+                  className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-input dark:bg-input/30 dark:text-foreground dark:placeholder:text-muted-foreground"
                   {...register('industry')}
                 />
               </Field>
@@ -326,7 +335,7 @@ export function SectionContact() {
 
             {/* Topic — radix Select wired to react-hook-form via setValue */}
             <div className="flex flex-col gap-2">
-              <Label htmlFor="topic" className="text-mist/80">
+              <Label htmlFor="topic" className="text-ink/80 dark:text-mist/80">
                 What do you need help with?
               </Label>
               <Select
@@ -335,14 +344,14 @@ export function SectionContact() {
               >
                 <SelectTrigger
                   id="topic"
-                  className="w-full border-white/15 bg-white/5 text-mist data-[placeholder]:text-mist/50"
+                  className="w-full border-ink/15 bg-white/90 text-ink data-[placeholder]:text-ink/40 dark:border-white/15 dark:bg-white/5 dark:text-mist dark:data-[placeholder]:text-mist/50"
                   aria-label="What do you need help with?"
                 >
                   <SelectValue placeholder="Select a focus area" />
                 </SelectTrigger>
-                <SelectContent className="border-white/15 bg-ink-soft text-mist">
+                <SelectContent className="border-ink/10 bg-white text-ink shadow-xl dark:border-white/15 dark:bg-ink-soft dark:text-mist">
                   {TOPICS.map((t) => (
-                    <SelectItem key={t} value={t} className="text-mist/90 focus:bg-white/10 focus:text-mist">
+                    <SelectItem key={t} value={t} className="text-ink/90 focus:bg-ink/5 focus:text-ink dark:text-mist/90 dark:focus:bg-white/10 dark:focus:text-mist">
                       {t}
                     </SelectItem>
                   ))}
@@ -355,7 +364,7 @@ export function SectionContact() {
                 id="message"
                 rows={5}
                 placeholder="Tell us what you are trying to achieve, what is holding growth back, and which part of the journey you want to improve."
-                className="border-white/15 bg-white/5 text-mist placeholder:text-mist/45"
+                className="border-ink/15 bg-white/90 text-ink placeholder:text-ink/40 focus-visible:border-royal dark:border-white/15 dark:bg-white/5 dark:text-mist dark:placeholder:text-mist/45"
                 {...register('message')}
               />
             </Field>
@@ -363,7 +372,7 @@ export function SectionContact() {
             {/* Cloudflare Turnstile — renders nothing in dev (no keys) */}
             {TURNSTILE_SITE_KEY && (
               <div className="flex flex-col gap-2">
-                <Label className="text-mist/80">Anti-spam verification</Label>
+                <Label className="text-ink/80 dark:text-mist/80">Anti-spam verification</Label>
                 <TurnstileWidget onToken={setTurnstileToken} />
               </div>
             )}
@@ -381,7 +390,7 @@ export function SectionContact() {
               )}
             </Button>
 
-            <p className="text-xs text-mist/45">
+            <p className="text-xs text-ink/50 dark:text-mist/45">
               By submitting, you agree to be contacted about your enquiry. See our
               Privacy and Cookie Policy below.
             </p>
@@ -407,7 +416,7 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <Label htmlFor={id} className="text-mist/80">
+      <Label htmlFor={id} className="text-ink/80 dark:text-mist/80">
         {label}
         {required && <span className="ml-1 text-coral">*</span>}
       </Label>

@@ -51,7 +51,7 @@ export function MobileActionBar() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           className="fixed bottom-[calc(0.75rem+env(safe-area-inset-bottom,0px))] inset-x-0 z-40 px-4 sm:hidden pointer-events-none"
         >
-          <div className="mx-auto max-w-sm flex items-center justify-between gap-2 rounded-full border border-white/20 bg-ink-deep/95 p-1.5 shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-xl pointer-events-auto">
+          <div className="mx-auto max-w-sm flex items-center justify-between gap-2 rounded-full border border-ink/15 dark:border-white/20 bg-white/95 dark:bg-ink-deep/95 p-1.5 shadow-[0_8px_32px_rgba(0,19,49,0.15)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.6)] backdrop-blur-xl pointer-events-auto">
             <Link
               href="/growth-score"
               className="flex-1 flex min-h-[44px] items-center justify-center gap-1.5 rounded-full bg-ribbon px-4 py-2.5 text-xs font-bold text-white shadow-md glow-ribbon active:scale-[0.98]"
@@ -61,9 +61,9 @@ export function MobileActionBar() {
             </Link>
             <Link
               href="/contact"
-              className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-xs font-semibold text-mist hover:bg-white/10 active:scale-[0.98]"
+              className="flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-ink/10 dark:border-white/15 bg-slate-100/80 dark:bg-white/5 px-5 py-2.5 text-xs font-semibold text-ink dark:text-mist hover:bg-slate-200/80 dark:hover:bg-white/10 active:scale-[0.98]"
             >
-              <MessageSquare className="h-3.5 w-3.5 text-cyan" />
+              <MessageSquare className="h-3.5 w-3.5 text-royal dark:text-cyan" />
               Talk
             </Link>
           </div>

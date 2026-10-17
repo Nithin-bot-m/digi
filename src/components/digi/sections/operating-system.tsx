@@ -165,13 +165,13 @@ function NodeRow({ nodes, reduced }: { nodes: Node[]; reduced: boolean }) {
         <li key={n.index} className="contents">
           <div className="flex items-stretch gap-3 sm:contents sm:gap-0">
             <div
-              className="glass-dark relative flex h-full flex-col gap-2 rounded-2xl p-5"
+              className="glass-dark relative flex h-full flex-col gap-2 rounded-2xl p-5 border border-ink/10 dark:border-white/10 shadow-xs dark:shadow-none"
               style={{
-                boxShadow: `0 0 0 1px ${ACCENT}22, 0 14px 40px -16px ${ACCENT}55`,
+                boxShadow: `0 0 0 1px ${ACCENT}22, 0 14px 40px -16px ${ACCENT}44`,
               }}
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tabular" style={{ color: ACCENT }}>
+                <span className="font-mono text-xs tabular font-bold" style={{ color: ACCENT }}>
                   {n.index}
                 </span>
                 <span
@@ -180,8 +180,8 @@ function NodeRow({ nodes, reduced }: { nodes: Node[]; reduced: boolean }) {
                   aria-hidden
                 />
               </div>
-              <h3 className="text-lg font-bold text-mist">{n.title}</h3>
-              <p className="text-sm leading-relaxed text-mist/70">{n.gloss}</p>
+              <h3 className="text-lg font-bold text-ink dark:text-mist">{n.title}</h3>
+              <p className="text-sm leading-relaxed text-ink/75 dark:text-mist/70">{n.gloss}</p>
             </div>
 
             {/* Ribbon connector between cards (desktop) */}

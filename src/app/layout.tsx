@@ -146,7 +146,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${manrope.variable} ${jetbrains.variable} antialiased bg-background text-foreground`}
       >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
           <SiteShell>{children}</SiteShell>
           <Toaster />
         </ThemeProvider>

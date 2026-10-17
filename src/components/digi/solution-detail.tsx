@@ -103,7 +103,7 @@ export function SolutionDetailPage({ slug }: { slug: string }) {
       {/* Other solutions cross-link */}
       <PageSection tone="dark">
         <div className="mb-8">
-          <h2 className="text-2xl font-bold text-mist sm:text-3xl">Other solutions in the system</h2>
+          <h2 className="text-2xl font-bold text-ink dark:text-mist sm:text-3xl">Other solutions in the system</h2>
         </div>
         <OtherSolutions currentSlug={slug} />
       </PageSection>
@@ -154,7 +154,7 @@ function OtherSolutions({ currentSlug }: { currentSlug: string }) {
       {others.map((c) => (
         <Link key={c.slug} href={`/solutions/${c.slug}`} className="group block">
           <div
-            className="glass-dark relative flex h-full flex-col gap-3 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20"
+            className="glass-dark relative flex h-full flex-col gap-3 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-ink/20 dark:hover:border-white/20 border border-ink/10 dark:border-white/10 shadow-xs dark:shadow-none"
             style={{
               boxShadow: `0 0 0 1px ${c.accent}22, 0 16px 40px -16px ${c.accent}33`,
             }}
@@ -168,8 +168,8 @@ function OtherSolutions({ currentSlug }: { currentSlug: string }) {
                 style={{ background: c.accent, boxShadow: `0 0 10px ${c.accent}` }}
               />
             </div>
-            <h3 className="mt-1 text-lg font-bold text-mist">{c.title}</h3>
-            <p className="flex-1 text-xs leading-relaxed text-mist/65">{c.oneLiner}</p>
+            <h3 className="mt-1 text-lg font-bold text-ink dark:text-mist">{c.title}</h3>
+            <p className="flex-1 text-xs leading-relaxed text-ink/75 dark:text-mist/65">{c.oneLiner}</p>
             <p
               className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider transition-transform duration-200 group-hover:translate-x-1"
               style={{ color: c.accent }}

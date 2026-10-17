@@ -25,7 +25,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   }, [pathname])
 
   return (
-    <div id="top" className="page-shell bg-ink">
+    <div id="top" className="page-shell bg-background text-foreground transition-colors duration-300">
       <SiteHeader />
       <main className="relative z-10 flex-1">{children}</main>
       <SiteFooter />

@@ -13,6 +13,7 @@ import { ShimmerButton } from '@/components/ui/shimmer-button'
 import { SpotlightCard } from '@/components/ui/spotlight-card'
 import { BorderBeam } from '@/components/ui/border-beam'
 import { InteractiveGrowthCalculator } from '@/components/digi/interactive-growth-calculator'
+import { cn } from '@/lib/utils'
 
 /**
  * Home — the curated Digi∞Artha landing.
@@ -133,7 +134,7 @@ function Hero() {
         </ShimmerButton>
         <Link
           href="/contact"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-mist backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/35 active:scale-[0.98]"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 bg-white/90 px-6 py-3.5 text-sm font-semibold text-ink shadow-sm backdrop-blur-md transition-all hover:bg-white hover:border-ink/30 active:scale-[0.98] dark:border-white/20 dark:bg-white/5 dark:text-mist dark:hover:bg-white/10 dark:hover:border-white/35"
         >
           Talk to a Growth Strategist
           <CtaArrow />
@@ -248,16 +249,16 @@ function GrowthSystemOverview() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10% 0px' }}
               transition={{ duration: 0.5, delay: idx * 0.08, ease: 'easeOut' }}
-              className="glass-dark relative flex flex-col gap-3 rounded-2xl p-5"
-              style={{ boxShadow: `0 0 0 1px ${s.color}22, 0 12px 40px -16px ${s.color}55` }}
+              className="glass-dark relative flex flex-col gap-3 rounded-2xl p-5 border border-ink/10 dark:border-white/10"
+              style={{ boxShadow: `0 0 0 1px ${s.color}22, 0 12px 40px -16px ${s.color}44` }}
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tabular" style={{ color: s.color }}>{s.i}</span>
+                <span className="font-mono text-xs tabular font-bold" style={{ color: s.color }}>{s.i}</span>
                 <span className="inline-block h-2 w-2 rounded-full" style={{ background: s.color, boxShadow: `0 0 12px ${s.color}` }} />
               </div>
-              <h3 className="text-lg font-bold text-mist">{s.name}</h3>
-              <p className="text-sm text-mist/75">{s.msg}</p>
-              <p className="mt-auto text-[11px] font-medium uppercase tracking-wider text-mist/45">{s.caps}</p>
+              <h3 className="text-lg font-bold text-ink dark:text-mist">{s.name}</h3>
+              <p className="text-sm text-ink/75 dark:text-mist/75">{s.msg}</p>
+              <p className="mt-auto text-[11px] font-medium uppercase tracking-wider text-ink/50 dark:text-mist/45">{s.caps}</p>
             </motion.div>
           ))}
 
@@ -270,15 +271,15 @@ function GrowthSystemOverview() {
           >
             <Link
               href="/growth-os"
-              className="glass-dark flex h-full flex-col gap-3 rounded-2xl p-5 transition hover:scale-[1.01]"
-              style={{ boxShadow: `0 0 0 1px rgba(255,255,255,0.10), 0 12px 40px -16px rgba(233,59,242,0.45)` }}
+              className="glass-dark flex h-full flex-col gap-3 rounded-2xl p-5 border border-ink/10 dark:border-white/10 transition hover:scale-[1.01]"
+              style={{ boxShadow: `0 0 0 1px rgba(233,59,242,0.2), 0 12px 40px -16px rgba(233,59,242,0.35)` }}
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tabular text-mist/60">∞</span>
+                <span className="font-mono text-xs tabular text-ink/60 dark:text-mist/60">∞</span>
                 <InfinityLogo className="block" strokeWidth={14} withSparkle={false} withArrowhead={false} />
               </div>
-              <h3 className="text-lg font-bold text-mist">The Growth Loop</h3>
-              <p className="text-sm text-mist/75">Discover → Attract → Convert → Measure → Optimise → Grow → ∞</p>
+              <h3 className="text-lg font-bold text-ink dark:text-mist">The Growth Loop</h3>
+              <p className="text-sm text-ink/75 dark:text-mist/75">Discover → Attract → Convert → Measure → Optimise → Grow → ∞</p>
               <p className="mt-auto inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-magenta">
                 Explore the Operating System <ArrowRight className="h-3 w-3" />
               </p>
@@ -287,13 +288,13 @@ function GrowthSystemOverview() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <Link href="/pillars" className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-sm text-mist/80 hover:bg-white/5">
+          <Link href="/pillars" className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-medium text-ink/80 shadow-xs hover:bg-white hover:text-ink dark:border-white/20 dark:bg-transparent dark:text-mist/80 dark:hover:bg-white/5">
             See the 13 pillars behind the system <ArrowRight className="h-3.5 w-3.5" />
           </Link>
-          <Link href="/engagement-models" className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-sm text-mist/80 hover:bg-white/5">
+          <Link href="/engagement-models" className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-medium text-ink/80 shadow-xs hover:bg-white hover:text-ink dark:border-white/20 dark:bg-transparent dark:text-mist/80 dark:hover:bg-white/5">
             Engagement models <ArrowRight className="h-3.5 w-3.5" />
           </Link>
-          <Link href="/how-we-work" className="inline-flex items-center gap-1.5 rounded-full border border-white/20 px-4 py-2 text-sm text-mist/80 hover:bg-white/5">
+          <Link href="/how-we-work" className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-medium text-ink/80 shadow-xs hover:bg-white hover:text-ink dark:border-white/20 dark:bg-transparent dark:text-mist/80 dark:hover:bg-white/5">
             How we work <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -338,11 +339,16 @@ function GrowthLoopFinale() {
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
               onClick={() => setActive(i)}
-              className="rounded-full border px-3 py-1.5 text-xs font-semibold transition"
+              className={cn(
+                "rounded-full border px-3 py-1.5 text-xs font-semibold transition-all duration-200",
+                active === i
+                  ? "shadow-sm"
+                  : "border-ink/15 bg-white/70 text-ink/75 hover:border-ink/30 hover:text-ink hover:bg-white dark:border-white/15 dark:bg-transparent dark:text-mist/70 dark:hover:border-white/30 dark:hover:text-mist"
+              )}
               style={{
-                borderColor: active === i ? s.color : 'rgba(255,255,255,0.15)',
-                background: active === i ? `${s.color}22` : 'transparent',
-                color: active === i ? s.color : 'rgba(255,255,255,0.7)',
+                borderColor: active === i ? s.color : undefined,
+                background: active === i ? `${s.color}20` : undefined,
+                color: active === i ? s.color : undefined,
               }}
             >
               {s.name}
@@ -354,12 +360,12 @@ function GrowthLoopFinale() {
           initial={reduced ? undefined : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
-          className="mx-auto mt-6 max-w-xl rounded-2xl border border-white/10 bg-white/5 p-5"
+          className="mx-auto mt-6 max-w-xl rounded-2xl border border-ink/10 bg-white/90 p-5 shadow-sm dark:border-white/10 dark:bg-white/5"
         >
-          <p className="text-sm text-mist/80" style={{ color: loopStages[active].color }}>
+          <p className="text-sm font-semibold" style={{ color: loopStages[active].color }}>
             {loopStages[active].msg}
           </p>
-          <p className="mt-2 text-xs text-mist/55">{loopStages[active].caps}</p>
+          <p className="mt-2 text-xs text-ink/70 dark:text-mist/55">{loopStages[active].caps}</p>
         </motion.div>
       </div>
     </section>
@@ -417,12 +423,12 @@ function FinalCta() {
         <InfinityLogo className="block" strokeWidth={36} glow withSparkle withArrowhead />
       </div>
       <div className="relative mx-auto max-w-4xl px-4">
-        <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ink-deep/90 p-6 sm:p-12 lg:p-14 backdrop-blur-2xl shadow-[0_20px_80px_-20px_rgba(123,63,254,0.4)]">
+        <div className="relative overflow-hidden rounded-3xl border border-ink/10 bg-white/95 p-6 sm:p-12 lg:p-14 backdrop-blur-2xl shadow-[0_20px_60px_-15px_rgba(0,19,49,0.08)] dark:border-white/15 dark:bg-ink-deep/90 dark:shadow-[0_20px_80px_-20px_rgba(123,63,254,0.4)]">
           <BorderBeam size={360} duration={14} colorFrom="#02A3FE" colorTo="#FF8E2D" />
-          <h2 className="text-balance text-3xl font-extrabold leading-tight text-mist sm:text-4xl lg:text-5xl">
+          <h2 className="text-balance text-3xl font-extrabold leading-tight text-ink dark:text-mist sm:text-4xl lg:text-5xl">
             Your next stage of growth starts with clarity.
           </h2>
-          <p className="mt-4 text-mist/75 max-w-xl mx-auto text-base sm:text-lg">
+          <p className="mt-4 text-ink/75 dark:text-mist/75 max-w-xl mx-auto text-base sm:text-lg">
             Understand where you&rsquo;re strong. Find what&rsquo;s holding you back. Build the system.
             Measure the outcome. Scale what works.
           </p>
@@ -432,12 +438,12 @@ function FinalCta() {
             </ShimmerButton>
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-7 py-3.5 text-sm font-semibold text-mist hover:bg-white/10 transition-all active:scale-[0.98]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 bg-white px-7 py-3.5 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-slate-50 active:scale-[0.98] dark:border-white/25 dark:bg-white/5 dark:text-mist dark:hover:bg-white/10"
             >
               Talk to Digi∞Artha <CtaArrow />
             </Link>
           </div>
-          <p className="mt-6 text-xs text-mist/40">
+          <p className="mt-6 text-xs text-ink/50 dark:text-mist/40">
             Illustrative <Illustrative /> — every number we report connects to a real business outcome.
           </p>
         </div>

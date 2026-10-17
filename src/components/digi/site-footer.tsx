@@ -62,12 +62,12 @@ export function SiteFooter() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <BrandLogo variant="dark" size="lg" glow />
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-mist/60">
+            <BrandLogo variant="auto" size="lg" glow={false} />
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-ink/70 dark:text-mist/60">
               Digi∞Artha connects performance marketing, search, creative, conversion, data and
               automation into one continuous digital growth system.
             </p>
-            <Tagline variant="dark" className="mt-4" />
+            <Tagline variant="auto" className="mt-4" />
             <Link
               href="/growth-score"
               className="mt-6 inline-flex min-h-[44px] items-center gap-1.5 rounded-full bg-ribbon px-4 py-2 text-sm font-semibold text-white glow-ribbon active:scale-[0.98]"

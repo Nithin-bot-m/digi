@@ -103,14 +103,14 @@ export function SectionEngagementModels() {
             viewport={{ once: true, margin: '-10% 0px' }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
             whileHover={reduced ? undefined : { y: -4 }}
-            className="glass-dark relative flex h-full flex-col gap-4 rounded-2xl p-5"
+            className="glass-dark relative flex h-full flex-col gap-4 rounded-2xl p-5 border border-ink/10 dark:border-white/10 shadow-xs dark:shadow-none"
             style={{
-              boxShadow: `0 0 0 1px ${m.accent}22, 0 14px 40px -16px ${m.accent}55`,
+              boxShadow: `0 0 0 1px ${m.accent}22, 0 14px 40px -16px ${m.accent}44`,
             }}
           >
             <div className="flex items-center justify-between">
               <span
-                className="font-mono text-xs tabular"
+                className="font-mono text-xs tabular font-bold"
                 style={{ color: m.accent }}
               >
                 {m.index}
@@ -122,14 +122,14 @@ export function SectionEngagementModels() {
               />
             </div>
 
-            <h3 className="text-lg font-bold text-mist">{m.name}</h3>
+            <h3 className="text-lg font-bold text-ink dark:text-mist">{m.name}</h3>
 
-            <p className="text-sm leading-relaxed text-mist/70">{m.gloss}</p>
+            <p className="text-sm leading-relaxed text-ink/75 dark:text-mist/70">{m.gloss}</p>
 
             <div className="mt-auto flex flex-wrap items-center gap-2 pt-2">
               <Tag color={m.accent}>{m.tag}</Tag>
               {m.timeframe && (
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-mist/55">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-medium text-ink/60 dark:text-mist/55">
                   <span>Typically {m.timeframe}</span>
                   <Illustrative label="Illustrative" />
                 </span>

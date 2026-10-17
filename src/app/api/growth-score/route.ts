@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 import { rateLimit, getClientIp } from '@/lib/rate-limit'
 
-export const dynamic = 'force-static'
+export const dynamic = 'force-dynamic'
 
 /**
  * Digi∞Artha — Digital Growth Score™ backend

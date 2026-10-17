@@ -5,7 +5,9 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { BrandLogo, Wordmark, CtaArrow } from './brand'
+import { ThemeToggle } from './theme-toggle'
 import { cn } from '@/lib/utils'
 
 const NAV = [
@@ -88,10 +90,19 @@ export function SiteHeader() {
     }
   }, [open])
 
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const isActive = (href: string) =>
     pathname === href || (href !== '/' && pathname.startsWith(href))
 
-  const isLight = headerTone === 'light'
+  const isLight = mounted
+    ? resolvedTheme === 'light' || headerTone === 'light'
+    : LIGHT_ROUTES.has(pathname)
 
   return (
     <header
@@ -100,12 +111,17 @@ export function SiteHeader() {
         isLight
           ? scrolled || open
             ? 'backdrop-blur-xl bg-white/90 border-b border-ink/10 shadow-[0_10px_30px_-10px_rgba(0,19,49,0.08)]'
-            : 'backdrop-blur-md bg-white/70 border-b border-ink/8 shadow-[0_4px_20px_-4px_rgba(0,19,49,0.05)]'
+            : 'backdrop-blur-md bg-white/75 border-b border-ink/10 shadow-[0_4px_20px_-4px_rgba(0,19,49,0.06)]'
           : scrolled || open
             ? 'backdrop-blur-xl bg-ink/90 border-b border-white/10 shadow-2xl'
-            : 'bg-transparent border-b border-transparent',
+            : 'backdrop-blur-md bg-ink/70 border-b border-white/10 shadow-[0_4px_25px_-4px_rgba(0,19,49,0.6)]',
       )}
     >
+      {/* Top luminous ambient ribbon highlight line */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#02A3FE] via-[#7B3FFE] to-[#E93BF2] opacity-80"
+        aria-hidden="true"
+      />
       <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -127,14 +143,15 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                data-active={active ? 'true' : undefined}
                 className={cn(
                   'sliding-underline relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-all duration-200',
                   isLight
                     ? active
-                      ? 'bg-ink/10 text-ink font-semibold shadow-inner'
+                      ? 'bg-ink/10 text-royal font-semibold shadow-inner'
                       : 'text-ink/75 hover:bg-ink/5 hover:text-ink'
                     : active
-                      ? 'bg-white/10 text-mist font-semibold shadow-inner'
+                      ? 'bg-white/10 text-cyan font-semibold shadow-inner shadow-cyan/20 ring-1 ring-cyan/30'
                       : 'text-mist/75 hover:bg-white/5 hover:text-mist',
                 )}
               >
@@ -144,7 +161,8 @@ export function SiteHeader() {
           })}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          <ThemeToggle isLight={isLight} />
           <Link
             href="/growth-score"
             className="group hidden items-center gap-1.5 rounded-full bg-ribbon px-4 py-2 text-sm font-semibold text-white shadow-lg glow-ribbon shine-sweep gradient-slide-btn transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] sm:inline-flex"
@@ -221,6 +239,12 @@ export function SiteHeader() {
                   isLight ? 'border-ink/10' : 'border-white/10',
                 )}
               >
+                <div className="flex items-center justify-between px-2 py-1.5">
+                  <span className={cn('text-sm font-semibold', isLight ? 'text-ink/80' : 'text-mist/80')}>
+                    Theme Mode
+                  </span>
+                  <ThemeToggle isLight={isLight} />
+                </div>
                 <Link
                   href="/growth-score"
                   onClick={() => setOpen(false)}

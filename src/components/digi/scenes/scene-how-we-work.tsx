@@ -147,8 +147,8 @@ export function SceneHowWeWork() {
                     className={cn(
                       'group relative cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 p-6 sm:p-7',
                       isActive
-                        ? 'border-white/20 bg-slate-900/95 shadow-2xl'
-                        : 'border-white/10 bg-slate-950/60 hover:border-white/20 hover:bg-slate-900/80',
+                        ? 'border-royal/30 bg-white/95 shadow-xl dark:border-white/20 dark:bg-slate-900/95'
+                        : 'border-ink/10 bg-white/80 hover:border-ink/20 hover:bg-white dark:border-white/10 dark:bg-slate-950/60 dark:hover:bg-slate-900/80',
                     )}
                     style={{
                       boxShadow: isActive
@@ -181,7 +181,7 @@ export function SceneHowWeWork() {
                         >
                           {s.index}
                         </span>
-                        <h3 className="text-xl font-bold text-mist sm:text-2xl tracking-tight">
+                        <h3 className="text-xl font-bold text-ink dark:text-mist sm:text-2xl tracking-tight">
                           {s.title}
                         </h3>
                       </div>
@@ -196,7 +196,7 @@ export function SceneHowWeWork() {
                             <span>ACTIVE STAGE</span>
                           </span>
                         ) : (
-                          <span className="font-mono text-[11px] uppercase tracking-wider text-mist/40 group-hover:text-mist/70">
+                          <span className="font-mono text-[11px] uppercase tracking-wider text-ink/40 group-hover:text-ink/70 dark:text-mist/40 dark:group-hover:text-mist/70">
                             {`STAGE ${s.index}`}
                           </span>
                         )}
@@ -204,7 +204,7 @@ export function SceneHowWeWork() {
                     </div>
 
                     {/* Verbatim Copy */}
-                    <p className="mt-3 text-sm leading-relaxed text-mist/85 sm:text-base">
+                    <p className="mt-3 text-sm leading-relaxed text-ink/80 dark:text-mist/85 sm:text-base">
                       {s.copy}
                     </p>
 
@@ -216,8 +216,8 @@ export function SceneHowWeWork() {
                           className={cn(
                             'rounded-md px-2.5 py-1 text-[11px] font-medium transition-colors duration-200',
                             isActive
-                              ? 'bg-white/10 text-mist'
-                              : 'bg-white/5 text-mist/60 group-hover:bg-white/10 group-hover:text-mist/80',
+                              ? 'bg-royal/10 text-royal-950 dark:bg-white/10 dark:text-mist'
+                              : 'bg-ink/5 text-ink/70 group-hover:bg-ink/10 group-hover:text-ink dark:bg-white/5 dark:text-mist/60 dark:group-hover:bg-white/10 dark:group-hover:text-mist/80',
                           )}
                           style={{
                             borderLeft: isActive ? `2px solid ${s.accent}` : undefined,

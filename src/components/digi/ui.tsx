@@ -191,10 +191,10 @@ export function GlassNode({
       <Wrapper
         onClick={onClick}
         className={cn(
-          'glass-dark shine-sweep relative flex h-full w-full flex-col gap-3 rounded-2xl p-4 sm:p-5 text-left transition-all duration-300',
-          onClick && 'cursor-pointer hover:border-white/20 hover:shadow-[0_16px_50px_-10px_rgba(46,75,254,0.35)]',
+          'glass-dark shine-sweep relative flex h-full w-full flex-col gap-3 rounded-2xl p-4 sm:p-5 text-left transition-all duration-300 border border-ink/10 dark:border-white/10 shadow-xs dark:shadow-none',
+          onClick && 'cursor-pointer hover:border-ink/20 dark:hover:border-white/20 hover:shadow-[0_16px_50px_-10px_rgba(46,75,254,0.15)] dark:hover:shadow-[0_16px_50px_-10px_rgba(46,75,254,0.35)]',
         )}
-        style={{ boxShadow: `0 0 0 1px ${accentColor}28, 0 12px 40px -12px ${accentColor}55` }}
+        style={{ boxShadow: `0 0 0 1px ${accentColor}28, 0 12px 40px -12px ${accentColor}44` }}
       >
         <div className="flex items-center justify-between">
           {index && (
@@ -210,7 +210,7 @@ export function GlassNode({
             style={{ background: accentColor, color: accentColor, boxShadow: `0 0 12px ${accentColor}` }}
           />
         </div>
-        <h3 className="text-base sm:text-lg font-bold text-mist">{title}</h3>
+        <h3 className="text-base sm:text-lg font-bold text-ink dark:text-mist">{title}</h3>
         {children}
       </Wrapper>
     </motion.div>
@@ -251,14 +251,14 @@ export function SidePanel({
       {open && (
         <>
           <motion.div
-            className="fixed inset-0 z-[90] bg-ink/70 backdrop-blur-sm"
+            className="fixed inset-0 z-[90] bg-ink/40 dark:bg-ink/70 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
           />
           <motion.aside
-            className="fixed right-0 top-0 z-[95] h-dvh w-full max-w-md overflow-y-auto glass-dark"
+            className="fixed right-0 top-0 z-[95] h-dvh w-full max-w-md overflow-y-auto glass-dark bg-white dark:bg-ink-deep border-l border-ink/10 dark:border-white/10 shadow-2xl"
             initial={reduced ? { opacity: 0 } : { x: '100%' }}
             animate={reduced ? { opacity: 1 } : { x: 0 }}
             exit={reduced ? { opacity: 0 } : { x: '100%' }}
@@ -268,19 +268,19 @@ export function SidePanel({
             aria-modal="true"
           >
             <div
-              className="sticky top-0 z-10 flex items-center justify-between border-b border-white/10 bg-ink-deep/80 p-4 sm:p-5 backdrop-blur"
+              className="sticky top-0 z-10 flex items-center justify-between border-b border-ink/10 dark:border-white/10 bg-white/90 dark:bg-ink-deep/80 p-4 sm:p-5 backdrop-blur"
               style={{ boxShadow: `inset 0 -2px 0 ${accent}` }}
             >
-              <h3 className="text-base sm:text-lg font-bold text-mist">{title}</h3>
+              <h3 className="text-base sm:text-lg font-bold text-ink dark:text-mist">{title}</h3>
               <button
                 onClick={onClose}
-                className="flex h-11 w-11 items-center justify-center rounded-xl p-2 text-mist/70 hover:bg-white/10 hover:text-mist active:scale-95 transition-transform"
+                className="flex h-11 w-11 items-center justify-center rounded-xl p-2 text-ink/70 hover:bg-ink/5 hover:text-ink dark:text-mist/70 dark:hover:bg-white/10 dark:hover:text-mist active:scale-95 transition-transform"
                 aria-label="Close panel"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="p-5 sm:p-6 pb-28 text-sm text-mist/80">{children}</div>
+            <div className="p-5 sm:p-6 pb-28 text-sm text-ink/80 dark:text-mist/80">{children}</div>
           </motion.aside>
         </>
       )}

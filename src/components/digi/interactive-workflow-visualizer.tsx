@@ -137,7 +137,7 @@ export function InteractiveWorkflowVisualizer({
 
       {/* Main Glass Console Card */}
       <div
-        className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-950/85 p-3.5 shadow-2xl backdrop-blur-xl sm:p-5 lg:p-4.5 xl:p-6"
+        className="relative overflow-hidden rounded-3xl border border-ink/10 dark:border-white/10 bg-white/95 dark:bg-slate-950/85 p-3.5 shadow-xl dark:shadow-2xl backdrop-blur-xl sm:p-5 lg:p-4.5 xl:p-6"
         style={{
           boxShadow: `0 0 0 1px ${stage.accent}33, 0 20px 60px -15px ${stage.accent}40`,
         }}
@@ -147,14 +147,14 @@ export function InteractiveWorkflowVisualizer({
           className="pointer-events-none absolute inset-0 opacity-[0.04]"
           style={{
             backgroundImage:
-              'linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)',
+              'linear-gradient(rgba(0,0,0,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.15) 1px, transparent 1px)',
             backgroundSize: '24px 24px',
           }}
           aria-hidden="true"
         />
 
         {/* Console Header Bar */}
-        <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 sm:pb-3.5">
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-2 border-b border-ink/10 dark:border-white/10 pb-3 sm:pb-3.5">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-3 w-3">
               <span
@@ -167,7 +167,7 @@ export function InteractiveWorkflowVisualizer({
               />
             </span>
             <div className="flex flex-col">
-              <span className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-mist/60">
+              <span className="font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-widest text-ink/60 dark:text-mist/60">
                 Workflow Cockpit
               </span>
               <span
@@ -179,16 +179,16 @@ export function InteractiveWorkflowVisualizer({
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-mono text-mist/80 backdrop-blur-md">
-            <span className="text-mist/40">STAGE</span>
-            <span className="font-bold text-mist">{stage.index}</span>
-            <span className="text-mist/40">/</span>
-            <span className="text-mist/50">06</span>
+          <div className="flex items-center gap-1.5 rounded-full border border-ink/10 dark:border-white/10 bg-ink/5 dark:bg-white/5 px-2.5 py-0.5 text-[10px] sm:text-[11px] font-mono text-ink/80 dark:text-mist/80 backdrop-blur-md">
+            <span className="text-ink/40 dark:text-mist/40">STAGE</span>
+            <span className="font-bold text-ink dark:text-mist">{stage.index}</span>
+            <span className="text-ink/40 dark:text-mist/40">/</span>
+            <span className="text-ink/50 dark:text-mist/50">06</span>
           </div>
         </div>
 
         {/* Central Stage Dynamic Visual Canvas */}
-        <div className="relative my-3 flex min-h-[220px] w-full items-center justify-center overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-b from-slate-900/60 to-black/80 p-3 sm:my-3.5 sm:min-h-[260px] lg:min-h-[240px] xl:min-h-[270px] sm:p-4">
+        <div className="relative my-3 flex min-h-[220px] w-full items-center justify-center overflow-hidden rounded-2xl border border-ink/10 dark:border-white/5 bg-gradient-to-b from-slate-100 to-slate-200/70 dark:from-slate-900/60 dark:to-black/80 p-3 sm:my-3.5 sm:min-h-[260px] lg:min-h-[240px] xl:min-h-[270px] sm:p-4">
           <AnimatePresence mode="wait">
             <motion.div
               key={stage.index}
@@ -208,16 +208,16 @@ export function InteractiveWorkflowVisualizer({
           </AnimatePresence>
 
           {/* Real-time Stage Watermark */}
-          <div className="pointer-events-none absolute bottom-3 right-3 font-mono text-[9px] uppercase tracking-widest text-mist/30">
+          <div className="pointer-events-none absolute bottom-3 right-3 font-mono text-[9px] uppercase tracking-widest text-ink/30 dark:text-mist/30">
             {stage.title} · Interactive HUD
           </div>
         </div>
 
         {/* Live Metrics Grid (Dynamic Counter) */}
-        <div className="relative z-10 grid grid-cols-3 gap-1.5 rounded-2xl border border-white/10 bg-white/[0.03] p-2 text-center sm:gap-2 sm:p-3">
+        <div className="relative z-10 grid grid-cols-3 gap-1.5 rounded-2xl border border-ink/10 dark:border-white/10 bg-slate-50 dark:bg-white/[0.03] p-2 text-center sm:gap-2 sm:p-3">
           {stage.metrics.map((m, idx) => (
             <div key={idx} className="flex flex-col items-center justify-center">
-              <span className="text-[10px] sm:text-[11px] font-medium text-mist/60">
+              <span className="text-[10px] sm:text-[11px] font-medium text-ink/70 dark:text-mist/60">
                 {m.label}
               </span>
               <div
@@ -233,8 +233,8 @@ export function InteractiveWorkflowVisualizer({
         </div>
 
         {/* Interactive Quick Stage Jumper Strip */}
-        <div className="relative z-10 mt-3 flex items-center justify-between gap-1.5 border-t border-white/10 pt-3">
-          <span className="hidden font-mono text-[10px] uppercase tracking-widest text-mist/40 sm:inline-block">
+        <div className="relative z-10 mt-3 flex items-center justify-between gap-1.5 border-t border-ink/10 dark:border-white/10 pt-3">
+          <span className="hidden font-mono text-[10px] uppercase tracking-widest text-ink/40 dark:text-mist/40 sm:inline-block">
             Jump to Stage:
           </span>
           <div className="flex w-full sm:w-auto items-center justify-between sm:justify-end gap-1.5">
@@ -248,7 +248,7 @@ export function InteractiveWorkflowVisualizer({
                     'group relative flex h-7 sm:h-8 flex-1 sm:flex-initial items-center justify-center rounded-lg px-2 sm:px-2.5 font-mono text-[11px] font-semibold transition-all duration-200',
                     isActive
                       ? 'border shadow-md'
-                      : 'border border-transparent bg-white/5 text-mist/50 hover:bg-white/10 hover:text-mist',
+                      : 'border border-transparent bg-ink/5 text-ink/60 hover:bg-ink/10 hover:text-ink dark:bg-white/5 dark:text-mist/50 dark:hover:bg-white/10 dark:hover:text-mist',
                   )}
                   style={{
                     backgroundColor: isActive ? `${s.accent}20` : undefined,

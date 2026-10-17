@@ -126,7 +126,7 @@ export function BrandLogo({
   glow = false,
   priority = false,
 }: {
-  variant?: 'light' | 'dark' | 'badge'
+  variant?: 'light' | 'dark' | 'badge' | 'auto'
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   format?: 'full' | 'mark'
   className?: string
@@ -140,6 +140,31 @@ export function BrandLogo({
     lg: format === 'mark' ? 'h-16 w-16' : 'h-16 sm:h-20 w-auto',
     xl: format === 'mark' ? 'h-24 w-24' : 'h-24 sm:h-32 w-auto',
     '2xl': format === 'mark' ? 'h-32 w-32' : 'h-32 sm:h-40 w-auto',
+  }
+
+  if (variant === 'auto' && format === 'full') {
+    return (
+      <div
+        className={cn(
+          'inline-flex items-center select-none',
+          glow && 'filter drop-shadow-[0_0_24px_rgba(123,63,254,0.45)]',
+          className,
+        )}
+      >
+        <img
+          src="/logo.png"
+          alt="Digi∞Artha — Digital. Measurable. Growth."
+          className={cn('block dark:hidden object-contain max-h-full transition-transform duration-200', sizeClasses[size])}
+          loading={priority ? 'eager' : 'lazy'}
+        />
+        <img
+          src="/logo-white.png"
+          alt="Digi∞Artha — Digital. Measurable. Growth."
+          className={cn('hidden dark:block object-contain max-h-full transition-transform duration-200', sizeClasses[size])}
+          loading={priority ? 'eager' : 'lazy'}
+        />
+      </div>
+    )
   }
 
   const src =
@@ -276,19 +301,24 @@ export function Wordmark({
 }
 
 export function Tagline({
-  variant = 'dark',
+  variant = 'auto',
   className,
   withRules = true,
 }: {
-  variant?: Variant
+  variant?: Variant | 'auto'
   className?: string
   withRules?: boolean
 }) {
-  const fg = variant === 'dark' ? 'text-mist/70' : 'text-ink/60'
+  const fg =
+    variant === 'auto'
+      ? 'text-ink/70 dark:text-mist/70'
+      : variant === 'dark'
+        ? 'text-mist/70'
+        : 'text-ink/60'
   return (
     <div className={cn('flex items-center gap-3', className)}>
       {withRules && <GradientRule className="h-px w-8" />}
-      <span className={cn('text-[11px] font-medium uppercase tracking-[0.28em]', fg)}>
+      <span className={cn('text-[11px] font-semibold uppercase tracking-[0.28em]', fg)}>
         Digital. Measurable. Growth.
       </span>
       {withRules && <GradientRule className="h-px w-8" />}

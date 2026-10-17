@@ -546,15 +546,15 @@ export function SectionPillars() {
             viewport={{ once: true, margin: '-10% 0px' }}
             transition={{ duration: 0.45, ease: 'easeOut' }}
             whileHover={reduced ? undefined : { y: -4, scale: 1.01 }}
-            className="glass-dark group relative flex h-full flex-col gap-3 rounded-2xl p-5 text-left"
+            className="glass-dark group relative flex h-full flex-col gap-3 rounded-2xl p-5 text-left border border-ink/10 dark:border-white/10 shadow-xs dark:shadow-none"
             style={{
-              boxShadow: `0 0 0 1px ${p.accent}22, 0 14px 40px -16px ${p.accent}55`,
+              boxShadow: `0 0 0 1px ${p.accent}22, 0 14px 40px -16px ${p.accent}44`,
             }}
             aria-label={`${p.name} — ${p.gloss}. Open detail panel.`}
           >
             <div className="flex items-center justify-between">
               <span
-                className="font-mono text-xs tabular"
+                className="font-mono text-xs tabular font-bold"
                 style={{ color: p.accent }}
               >
                 {p.index}
@@ -566,8 +566,8 @@ export function SectionPillars() {
                 aria-hidden
               />
             </div>
-            <h3 className="text-base font-bold leading-tight text-mist">{p.name}</h3>
-            <p className="text-sm leading-relaxed text-mist/70">{p.gloss}</p>
+            <h3 className="text-base font-bold leading-tight text-ink dark:text-mist">{p.name}</h3>
+            <p className="text-sm leading-relaxed text-ink/75 dark:text-mist/70">{p.gloss}</p>
           </motion.button>
         ))}
       </div>

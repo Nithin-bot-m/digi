@@ -126,7 +126,7 @@ export function PageHero({
                 <Link
                   key={c.href + c.label}
                   href={c.href}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-5 py-3 text-sm font-semibold text-mist transition-all hover:bg-white/10 active:scale-[0.98]"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 bg-white/90 px-5 py-3 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-white hover:border-ink/30 active:scale-[0.98] dark:border-white/25 dark:bg-white/5 dark:text-mist dark:hover:bg-white/10"
                 >
                   {c.label}
                   <CtaArrow />
@@ -183,24 +183,24 @@ export function NextStepBand({
     <section className="relative overflow-hidden stage-ink py-20 text-center" data-tone="dark">
       <div className="pointer-events-none absolute inset-0 mesh-grid opacity-25" aria-hidden="true" />
       <div className="relative mx-auto max-w-4xl px-4">
-        <div className="glass-dark relative overflow-hidden rounded-3xl border border-white/10 p-6 sm:p-12 shadow-[0_24px_80px_-24px_rgba(46,75,254,0.35)]">
+        <div className="glass-dark relative overflow-hidden rounded-3xl border border-ink/10 dark:border-white/10 p-6 sm:p-12 shadow-[0_20px_60px_-15px_rgba(0,19,49,0.08)] dark:shadow-[0_24px_80px_-24px_rgba(46,75,254,0.35)]">
           <BorderBeam size={280} duration={12} borderWidth={1.5} />
-          <h2 className="text-balance text-2xl font-extrabold leading-tight text-mist sm:text-4xl">
+          <h2 className="text-balance text-2xl font-extrabold leading-tight text-ink dark:text-mist sm:text-4xl">
             {title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-mist/75 sm:text-lg">{body}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-ink/75 dark:text-mist/75 sm:text-lg">{body}</p>
           <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center justify-center gap-3">
             <ShimmerButton href={primary.href} className="w-full sm:w-auto justify-center">
               <span>{primary.label}</span>
             </ShimmerButton>
             <Link
               href={secondary.href}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-mist hover:bg-white/10 transition-all active:scale-[0.98]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-full border border-ink/15 bg-white px-6 py-3 text-sm font-semibold text-ink shadow-sm hover:bg-slate-50 transition-all active:scale-[0.98] dark:border-white/25 dark:bg-white/5 dark:text-mist dark:hover:bg-white/10"
             >
               {secondary.label}
             </Link>
           </div>
-          <p className="mt-6 text-xs text-mist/40">
+          <p className="mt-6 text-xs text-ink/50 dark:text-mist/40">
             Every number on this page is illustrative <Illustrative /> — we report business outcomes, not vanity metrics.
           </p>
         </div>
